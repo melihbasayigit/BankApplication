@@ -18,9 +18,9 @@ byte rowPins[rows] = {21, 20, 19, 18};
 byte colPins[cols] = {17, 16, 15};
 String password = "0123";
 String pw = "";
-int currentposition = 0;
 boolean lockLed = 0;
 Keypad keypad = Keypad(makeKeymap(key), rowPins, colPins, rows, cols);
+int pos = 0;
 
 // Leds
 const int ledredPin = 4;
@@ -40,8 +40,6 @@ int PIRValue = 0;
 // Flame sensor
 const int flamePin = 3;
 const int buzzerPin = 7;
-boolean flameBegin = false;
-boolean breakSensor = false;
 
 // Temp Proccess
 float temp;
@@ -66,6 +64,7 @@ void setup() {
   // Led proccess
   pinMode(ledredPin, OUTPUT);
   pinMode(ledgrnPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
 
   // Temp proccess
   analogReference(INTERNAL1V1);
@@ -73,31 +72,22 @@ void setup() {
 
 void loop() {
   TempPros();
-  if (digitalRead(flamePin) == HIGH && flameBegin == false) {
-    flameBegin = true;
-  }
   flameSensor();
   PIRSensor();
   if (lockLed != 1) {
     login();
   }
-
 }
 
 void flameSensor() {
-  if (flameBegin == true && breakSensor == false) {
-    breakSensor = true;
-    delay(10);
-  }
-  if (flameBegin == true && breakSensor == true) {
+  if (digitalRead(flamePin) == HIGH) {
     tone(buzzerPin, 400, 500);
     delay(50);
     tone(buzzerPin, 650, 500);
     delay(50);
   }
   if (digitalRead(flamePin) == LOW) {
-    breakSensor = false;
-    flameBegin = false;
+    noTone(buzzerPin);
   }
 }
 
@@ -145,20 +135,22 @@ void correct() {
 
 void login() {
   char code = keypad.getKey();
-  int pos = 0;
   if (code != NO_KEY)
   {
-    digitalWrite(ledPin,HIGH);
-      delay(250);
-      digitalWrite(ledPin,LOW);
+    digitalWrite(ledPin, HIGH);
+    delay(100);
+    digitalWrite(ledPin, LOW);
     pw += code;
     if (pw == password) {
       correct();
       lockLed = 1;
     }
-    else if (pos == 4 && lockLed == 1){
+    else if (pos >= 3 && lockLed != 1) {
       incorrect();
     }
+    pos++;
   }
-  pos++;
+  if (code == '*') {
+    pw = "";
+  }
 }
