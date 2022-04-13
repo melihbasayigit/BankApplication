@@ -16,13 +16,16 @@ char key[rows][cols] = {
 };
 byte rowPins[rows] = {21, 20, 19, 18};
 byte colPins[cols] = {17, 16, 15};
-char* password = "0123";
+String password = "0123";
+String pw = "";
 int currentposition = 0;
+boolean lockLed = 0;
 Keypad keypad = Keypad(makeKeymap(key), rowPins, colPins, rows, cols);
 
 // Leds
 const int ledredPin = 4;
 const int ledgrnPin = 5;
+const int ledPin = 23;
 
 // Pir sensor
 const int pirPin = 2;
@@ -40,8 +43,9 @@ const int buzzerPin = 7;
 boolean flameBegin = false;
 boolean breakSensor = false;
 
-// Temperature sensor
-const int tempPin = 0;
+// Temp Proccess
+float temp;
+int count = 0;
 
 void setup() {
   // LCD Proccess
@@ -49,7 +53,7 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.print("TEMPERATURE IS: ");
   lcd.setCursor(0, 1);
-  lcd.print("22.97");
+  lcd.print("");
 
   // PIR proccess
   Serial.begin(9600);
@@ -62,62 +66,21 @@ void setup() {
   // Led proccess
   pinMode(ledredPin, OUTPUT);
   pinMode(ledgrnPin, OUTPUT);
+
+  // Temp proccess
+  analogReference(INTERNAL1V1);
 }
 
 void loop() {
+  TempPros();
   if (digitalRead(flamePin) == HIGH && flameBegin == false) {
     flameBegin = true;
   }
   flameSensor();
   PIRSensor();
-  TempPros();
-
-  char code = keypad.getKey();
-  if (code != NO_KEY)
-  {
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("PASSWORD:");
-    lcd.setCursor(7, 1);
-    lcd.print(" ");
-    lcd.setCursor(7, 1);
-    for (int i = 0; i <= currentposition; ++i)
-    {
-      lcd.print("*");
-    }
-
-    if (code == password[currentposition])
-    {
-      ++currentposition;
-      if (currentposition == 4)
-      {
-
-        correct();
-        currentposition = 0;
-
-      }
-
-    }
-
-
-    else
-    {
-      incorrect();
-      currentposition = 0;
-
-    }
+  if (lockLed != 1) {
+    login();
   }
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
@@ -150,11 +113,20 @@ void PIRSensor() {
 }
 
 void TempPros() {
-  int vout=analogRead(tempPin);
-  vout = (vout*4.88) / 10;
-  int tempc = vout;
-  Serial.print("Temature is: ");
-  Serial.println(tempc);
+  temp = analogRead (A2) ;
+  temp = temp * 1100 / (1024 * 10) ;
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print ("TEMP:");
+  lcd.print (temp) ;
+  lcd.println("*C");
+  lcd.setCursor(0, 1);
+  if (temp < 20) {
+    lcd.print("SICAKLIK DUSTU");
+  }
+  if (temp > 30) {
+    lcd.print("SICAKLIK YUKSELDI");
+  }
   delay(50);
 }
 
@@ -167,5 +139,26 @@ void incorrect() {
 void correct() {
   digitalWrite(ledredPin, LOW);
   digitalWrite(ledgrnPin, HIGH);
+  lockLed = 1;
   delay(50);
+}
+
+void login() {
+  char code = keypad.getKey();
+  int pos = 0;
+  if (code != NO_KEY)
+  {
+    digitalWrite(ledPin,HIGH);
+      delay(250);
+      digitalWrite(ledPin,LOW);
+    pw += code;
+    if (pw == password) {
+      correct();
+      lockLed = 1;
+    }
+    else if (pos == 4 && lockLed == 1){
+      incorrect();
+    }
+  }
+  pos++;
 }
