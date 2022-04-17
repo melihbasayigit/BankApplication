@@ -30,12 +30,6 @@ const int ledPin = 23;
 // Pir sensor
 const int pirPin = 2;
 const int lambPin = 6;
-int calibrationTime = 30;
-long unsigned int lowIn;
-long unsigned int _pause = 5000;
-boolean lockLow = true;
-boolean takeLowTime;
-int PIRValue = 0;
 
 // Flame sensor
 const int flamePin = 3;
@@ -44,7 +38,6 @@ const int buzzerPin = 7;
 // Temp Proccess
 float temp;
 int count = 0;
-
 void setup() {
   // LCD Proccess
   lcd.begin(16, 2);
@@ -55,6 +48,7 @@ void setup() {
 
   // PIR proccess
   Serial.begin(9600);
+
   pinMode(pirPin, INPUT);
   pinMode(lambPin, OUTPUT);
 
