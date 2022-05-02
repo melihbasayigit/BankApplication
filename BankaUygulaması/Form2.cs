@@ -13,6 +13,9 @@ namespace BankaUygulaması
 {
     public partial class Form2 : Form
     {
+        SqlConnection cnn;
+        SqlCommand loginCmd;
+        SqlDataReader loginDr;
         public Form2()
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace BankaUygulaması
         {
             // Veritabanı kontrol işlemleri
             string connectionString;
-            SqlConnection cnn;
+            
 
             connectionString = @"Data Source=localhost;Initial Catalog=bank;Integrated Security=True";
             cnn = new SqlConnection(connectionString);
@@ -35,9 +38,7 @@ namespace BankaUygulaması
             {
                 loginStatus_label.Text = "Veritabanına bağlanmada sıkıntı çıktı. Lütfen daha sonra tekrar deneyin.";
             }
-            // Giriş kontrol işlemleri
-            SqlCommand loginCmd;
-            SqlDataReader loginDr;
+            // Giriş kontrol 
             loginCmd = new SqlCommand();
             loginCmd.Connection = cnn;
             loginCmd.CommandText = "SELECT CurrencyName FROM Currency";
@@ -46,6 +47,8 @@ namespace BankaUygulaması
             {
                 createAcc_listBox.Items.Add(loginDr["CurrencyName"]);
             }
+            // Kredi faiz oranının veri tabanından çekilmesi ve programa yazım işlemi
+
             cnn.Close();
         }
 
@@ -53,9 +56,10 @@ namespace BankaUygulaması
         {
 
         }
-
+        string newstr;
         private void logout_button_Click(object sender, EventArgs e)
         {
+            cnn.Close();
             this.Close();
         }
     }
