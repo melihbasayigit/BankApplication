@@ -31,20 +31,22 @@
             this.login_button = new System.Windows.Forms.Button();
             this.customerID_textBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.money_textBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.createAcc_listBox = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.Acc_listbox = new System.Windows.Forms.ListBox();
             this.loginStatus_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.deleteAcc_listBox = new System.Windows.Forms.ListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.accNumber_textBox = new System.Windows.Forms.TextBox();
             this.logout_button = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // login_button
@@ -75,12 +77,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "ID:";
             // 
-            // textBox1
+            // money_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(418, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
+            this.money_textBox.Location = new System.Drawing.Point(418, 15);
+            this.money_textBox.Name = "money_textBox";
+            this.money_textBox.Size = new System.Drawing.Size(100, 22);
+            this.money_textBox.TabIndex = 3;
             // 
             // button1
             // 
@@ -127,14 +129,14 @@
             this.button4.Text = "Para Gönder";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // Acc_listbox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(537, 15);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(102, 52);
-            this.listBox2.TabIndex = 9;
+            this.Acc_listbox.FormattingEnabled = true;
+            this.Acc_listbox.ItemHeight = 16;
+            this.Acc_listbox.Location = new System.Drawing.Point(537, 15);
+            this.Acc_listbox.Name = "Acc_listbox";
+            this.Acc_listbox.Size = new System.Drawing.Size(102, 52);
+            this.Acc_listbox.TabIndex = 9;
             // 
             // loginStatus_label
             // 
@@ -183,12 +185,12 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Hesap Numarası";
             // 
-            // textBox2
+            // accNumber_textBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(659, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(110, 22);
-            this.textBox2.TabIndex = 15;
+            this.accNumber_textBox.Location = new System.Drawing.Point(659, 35);
+            this.accNumber_textBox.Name = "accNumber_textBox";
+            this.accNumber_textBox.Size = new System.Drawing.Size(110, 22);
+            this.accNumber_textBox.TabIndex = 15;
             // 
             // logout_button
             // 
@@ -201,26 +203,46 @@
             this.logout_button.UseVisualStyleBackColor = true;
             this.logout_button.Click += new System.EventHandler(this.logout_button_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(418, 101);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 23);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Kredi Çek";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(319, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 17);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Faiz Oranı: %";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(848, 514);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.logout_button);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.accNumber_textBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.deleteAcc_listBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.loginStatus_label);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.Acc_listbox);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.createAcc_listBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.money_textBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customerID_textBox);
             this.Controls.Add(this.login_button);
@@ -240,19 +262,21 @@
         private System.Windows.Forms.Button login_button;
         private System.Windows.Forms.TextBox customerID_textBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox money_textBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox createAcc_listBox;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox Acc_listbox;
         private System.Windows.Forms.Label loginStatus_label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox deleteAcc_listBox;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox accNumber_textBox;
         private System.Windows.Forms.Button logout_button;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label4;
     }
 }
