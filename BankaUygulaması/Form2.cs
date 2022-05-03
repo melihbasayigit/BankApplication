@@ -16,17 +16,17 @@ namespace BankaUygulaması
         SqlConnection cnn;
         SqlCommand loginCmd;
         SqlDataReader loginDr;
+        string connectionString;
+        public float interestRatio = 0f;
         public Form2()
         {
             InitializeComponent();
+            interestRatio_label.Text = "Faiz Oranı: %";
         }
 
         private void login_button_Click(object sender, EventArgs e)
         {
             // Veritabanı kontrol işlemleri
-            string connectionString;
-            
-
             connectionString = @"Data Source=localhost;Initial Catalog=bank;Integrated Security=True";
             cnn = new SqlConnection(connectionString);
             try
@@ -47,20 +47,25 @@ namespace BankaUygulaması
             {
                 createAcc_listBox.Items.Add(loginDr["CurrencyName"]);
             }
+            loginDr.Close();
             // Kredi faiz oranının veri tabanından çekilmesi ve programa yazım işlemi
-
+            SqlCommand settingsCmd;
+            settingsCmd = new SqlCommand();
+            settingsCmd.Connection = cnn;
+            settingsCmd.CommandText = "SELECT ValueFloat FROM Settings WHERE sID = 6";
+            SqlDataReader settingsDr;
+            settingsDr = settingsCmd.ExecuteReader();
+            if (settingsDr.Read())
+            {
+                interestRatio_label.Text = "Faiz Oranı: %\n" + settingsDr["ValueFloat"].ToString();
+            }
             cnn.Close();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-        string newstr;
         private void logout_button_Click(object sender, EventArgs e)
         {
-            cnn.Close();
             this.Close();
         }
+
     }
 }

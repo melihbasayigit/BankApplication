@@ -46,7 +46,7 @@
             this.accNumber_textBox = new System.Windows.Forms.TextBox();
             this.logout_button = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.interestRatio_label = new System.Windows.Forms.Label();
             this.monthly_button = new System.Windows.Forms.Button();
             this.name_textBox = new System.Windows.Forms.TextBox();
             this.personInf_label = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             // 
             this.login_button.Font = new System.Drawing.Font("Trebuchet MS", 13.8F, System.Drawing.FontStyle.Bold);
             this.login_button.Location = new System.Drawing.Point(9, 32);
-            this.login_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.login_button.Margin = new System.Windows.Forms.Padding(2);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(149, 55);
             this.login_button.TabIndex = 0;
@@ -74,7 +74,7 @@
             // customerID_textBox
             // 
             this.customerID_textBox.Location = new System.Drawing.Point(35, 10);
-            this.customerID_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.customerID_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.customerID_textBox.Name = "customerID_textBox";
             this.customerID_textBox.Size = new System.Drawing.Size(124, 20);
             this.customerID_textBox.TabIndex = 1;
@@ -93,7 +93,7 @@
             // money_textBox
             // 
             this.money_textBox.Location = new System.Drawing.Point(314, 12);
-            this.money_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.money_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.money_textBox.Name = "money_textBox";
             this.money_textBox.Size = new System.Drawing.Size(76, 20);
             this.money_textBox.TabIndex = 3;
@@ -101,7 +101,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(314, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 19);
             this.button1.TabIndex = 4;
@@ -111,7 +111,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(314, 58);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 19);
             this.button2.TabIndex = 5;
@@ -122,7 +122,7 @@
             // 
             this.createAcc_listBox.FormattingEnabled = true;
             this.createAcc_listBox.Location = new System.Drawing.Point(12, 140);
-            this.createAcc_listBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createAcc_listBox.Margin = new System.Windows.Forms.Padding(2);
             this.createAcc_listBox.Name = "createAcc_listBox";
             this.createAcc_listBox.Size = new System.Drawing.Size(91, 56);
             this.createAcc_listBox.TabIndex = 6;
@@ -130,7 +130,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(12, 200);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 19);
             this.button3.TabIndex = 7;
@@ -140,7 +140,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(403, 58);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(76, 19);
             this.button4.TabIndex = 8;
@@ -151,7 +151,7 @@
             // 
             this.Acc_listbox.FormattingEnabled = true;
             this.Acc_listbox.Location = new System.Drawing.Point(403, 12);
-            this.Acc_listbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Acc_listbox.Margin = new System.Windows.Forms.Padding(2);
             this.Acc_listbox.Name = "Acc_listbox";
             this.Acc_listbox.Size = new System.Drawing.Size(78, 43);
             this.Acc_listbox.TabIndex = 9;
@@ -182,7 +182,7 @@
             // 
             this.deleteAcc_listBox.FormattingEnabled = true;
             this.deleteAcc_listBox.Location = new System.Drawing.Point(12, 223);
-            this.deleteAcc_listBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.deleteAcc_listBox.Margin = new System.Windows.Forms.Padding(2);
             this.deleteAcc_listBox.Name = "deleteAcc_listBox";
             this.deleteAcc_listBox.Size = new System.Drawing.Size(91, 69);
             this.deleteAcc_listBox.TabIndex = 12;
@@ -190,7 +190,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(12, 297);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(90, 19);
             this.button5.TabIndex = 13;
@@ -210,7 +210,7 @@
             // accNumber_textBox
             // 
             this.accNumber_textBox.Location = new System.Drawing.Point(494, 28);
-            this.accNumber_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.accNumber_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.accNumber_textBox.Name = "accNumber_textBox";
             this.accNumber_textBox.Size = new System.Drawing.Size(84, 20);
             this.accNumber_textBox.TabIndex = 15;
@@ -219,7 +219,7 @@
             // 
             this.logout_button.Font = new System.Drawing.Font("Trebuchet MS", 13F, System.Drawing.FontStyle.Bold);
             this.logout_button.Location = new System.Drawing.Point(505, 315);
-            this.logout_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logout_button.Margin = new System.Windows.Forms.Padding(2);
             this.logout_button.Name = "logout_button";
             this.logout_button.Size = new System.Drawing.Size(72, 29);
             this.logout_button.TabIndex = 16;
@@ -230,27 +230,28 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(314, 82);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 19);
             this.button6.TabIndex = 17;
             this.button6.Text = "Kredi Çek";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // interestRatio_label
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(239, 84);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Faiz Oranı: %";
+            this.interestRatio_label.AutoSize = true;
+            this.interestRatio_label.Location = new System.Drawing.Point(248, 75);
+            this.interestRatio_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.interestRatio_label.Name = "interestRatio_label";
+            this.interestRatio_label.Size = new System.Drawing.Size(57, 26);
+            this.interestRatio_label.TabIndex = 18;
+            this.interestRatio_label.Text = "Faiz Oranı:\r\n%14.75";
+            this.interestRatio_label.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // monthly_button
             // 
             this.monthly_button.Location = new System.Drawing.Point(505, 277);
-            this.monthly_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.monthly_button.Margin = new System.Windows.Forms.Padding(2);
             this.monthly_button.Name = "monthly_button";
             this.monthly_button.Size = new System.Drawing.Size(72, 34);
             this.monthly_button.TabIndex = 19;
@@ -261,7 +262,7 @@
             // 
             this.name_textBox.Location = new System.Drawing.Point(70, 19);
             this.name_textBox.Name = "name_textBox";
-            this.name_textBox.Size = new System.Drawing.Size(100, 20);
+            this.name_textBox.Size = new System.Drawing.Size(120, 20);
             this.name_textBox.TabIndex = 20;
             // 
             // personInf_label
@@ -277,28 +278,28 @@
             // 
             this.surname_textBox.Location = new System.Drawing.Point(70, 46);
             this.surname_textBox.Name = "surname_textBox";
-            this.surname_textBox.Size = new System.Drawing.Size(100, 20);
+            this.surname_textBox.Size = new System.Drawing.Size(120, 20);
             this.surname_textBox.TabIndex = 22;
             // 
             // email_textBox
             // 
             this.email_textBox.Location = new System.Drawing.Point(70, 130);
             this.email_textBox.Name = "email_textBox";
-            this.email_textBox.Size = new System.Drawing.Size(100, 20);
+            this.email_textBox.Size = new System.Drawing.Size(120, 20);
             this.email_textBox.TabIndex = 23;
             // 
             // phone_textBox
             // 
             this.phone_textBox.Location = new System.Drawing.Point(70, 156);
             this.phone_textBox.Name = "phone_textBox";
-            this.phone_textBox.Size = new System.Drawing.Size(100, 20);
+            this.phone_textBox.Size = new System.Drawing.Size(120, 20);
             this.phone_textBox.TabIndex = 24;
             // 
             // address_textBox
             // 
             this.address_textBox.Location = new System.Drawing.Point(70, 75);
             this.address_textBox.Name = "address_textBox";
-            this.address_textBox.Size = new System.Drawing.Size(100, 49);
+            this.address_textBox.Size = new System.Drawing.Size(120, 49);
             this.address_textBox.TabIndex = 25;
             this.address_textBox.Text = "";
             // 
@@ -307,7 +308,7 @@
             this.updateMyInfo_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.updateMyInfo_button.Location = new System.Drawing.Point(16, 182);
             this.updateMyInfo_button.Name = "updateMyInfo_button";
-            this.updateMyInfo_button.Size = new System.Drawing.Size(154, 31);
+            this.updateMyInfo_button.Size = new System.Drawing.Size(174, 31);
             this.updateMyInfo_button.TabIndex = 26;
             this.updateMyInfo_button.Text = "Bilgilerimi Güncelle";
             this.updateMyInfo_button.UseVisualStyleBackColor = true;
@@ -336,7 +337,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.personelInformation_groupBox);
             this.Controls.Add(this.monthly_button);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.interestRatio_label);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.logout_button);
             this.Controls.Add(this.accNumber_textBox);
@@ -356,12 +357,11 @@
             this.Controls.Add(this.customerID_textBox);
             this.Controls.Add(this.login_button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";
             this.Text = "MÜŞTERİ PANELİ";
-            this.Load += new System.EventHandler(this.Form2_Load);
             this.personelInformation_groupBox.ResumeLayout(false);
             this.personelInformation_groupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -389,7 +389,7 @@
         private System.Windows.Forms.TextBox accNumber_textBox;
         private System.Windows.Forms.Button logout_button;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label interestRatio_label;
         private System.Windows.Forms.Button monthly_button;
         private System.Windows.Forms.TextBox name_textBox;
         private System.Windows.Forms.Label personInf_label;
