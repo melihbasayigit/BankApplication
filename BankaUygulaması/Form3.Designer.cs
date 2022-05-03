@@ -33,7 +33,7 @@
             this.idStatus_label = new System.Windows.Forms.Label();
             this.loginStatus_label = new System.Windows.Forms.Label();
             this.id_label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.login_button = new System.Windows.Forms.Button();
             this.customerList_listBox = new System.Windows.Forms.ListBox();
             this.personelInformation_groupBox = new System.Windows.Forms.GroupBox();
             this.name_textBox = new System.Windows.Forms.TextBox();
@@ -43,8 +43,8 @@
             this.surname_textBox = new System.Windows.Forms.TextBox();
             this.phone_textBox = new System.Windows.Forms.TextBox();
             this.email_textBox = new System.Windows.Forms.TextBox();
-            this.updateMyInfo_button = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.updateInfo_button = new System.Windows.Forms.Button();
+            this.deleteCustomer_button = new System.Windows.Forms.Button();
             this.selectedCustomerID_label = new System.Windows.Forms.Label();
             this.deleteCustomer_checkBox = new System.Windows.Forms.CheckBox();
             this.customerProc_groupBox = new System.Windows.Forms.GroupBox();
@@ -65,7 +65,7 @@
             this.login_groupBox.Controls.Add(this.idStatus_label);
             this.login_groupBox.Controls.Add(this.loginStatus_label);
             this.login_groupBox.Controls.Add(this.id_label);
-            this.login_groupBox.Controls.Add(this.button1);
+            this.login_groupBox.Controls.Add(this.login_button);
             this.login_groupBox.Location = new System.Drawing.Point(30, 24);
             this.login_groupBox.Name = "login_groupBox";
             this.login_groupBox.Size = new System.Drawing.Size(215, 131);
@@ -112,23 +112,25 @@
             this.id_label.TabIndex = 1;
             this.id_label.Text = "Müş. Temsilcisi ID\'si:";
             // 
-            // button1
+            // login_button
             // 
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 13.8F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(115, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "GİRİŞ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.login_button.Font = new System.Drawing.Font("Trebuchet MS", 13.8F, System.Drawing.FontStyle.Bold);
+            this.login_button.Location = new System.Drawing.Point(115, 52);
+            this.login_button.Name = "login_button";
+            this.login_button.Size = new System.Drawing.Size(94, 33);
+            this.login_button.TabIndex = 1;
+            this.login_button.Text = "GİRİŞ";
+            this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.button1_Click);
             // 
             // customerList_listBox
             // 
+            this.customerList_listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
             this.customerList_listBox.FormattingEnabled = true;
+            this.customerList_listBox.ItemHeight = 18;
             this.customerList_listBox.Location = new System.Drawing.Point(30, 170);
             this.customerList_listBox.Name = "customerList_listBox";
-            this.customerList_listBox.Size = new System.Drawing.Size(215, 459);
+            this.customerList_listBox.Size = new System.Drawing.Size(215, 454);
             this.customerList_listBox.TabIndex = 1;
             // 
             // personelInformation_groupBox
@@ -136,8 +138,8 @@
             this.personelInformation_groupBox.Controls.Add(this.deleteInfo_label);
             this.personelInformation_groupBox.Controls.Add(this.deleteCustomer_checkBox);
             this.personelInformation_groupBox.Controls.Add(this.selectedCustomerID_label);
-            this.personelInformation_groupBox.Controls.Add(this.button2);
-            this.personelInformation_groupBox.Controls.Add(this.updateMyInfo_button);
+            this.personelInformation_groupBox.Controls.Add(this.deleteCustomer_button);
+            this.personelInformation_groupBox.Controls.Add(this.updateInfo_button);
             this.personelInformation_groupBox.Controls.Add(this.name_textBox);
             this.personelInformation_groupBox.Controls.Add(this.insertNewCustomer_button);
             this.personelInformation_groupBox.Controls.Add(this.personInf_label);
@@ -207,25 +209,25 @@
             this.email_textBox.Size = new System.Drawing.Size(120, 20);
             this.email_textBox.TabIndex = 23;
             // 
-            // updateMyInfo_button
+            // updateInfo_button
             // 
-            this.updateMyInfo_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.updateMyInfo_button.Location = new System.Drawing.Point(16, 219);
-            this.updateMyInfo_button.Name = "updateMyInfo_button";
-            this.updateMyInfo_button.Size = new System.Drawing.Size(174, 31);
-            this.updateMyInfo_button.TabIndex = 27;
-            this.updateMyInfo_button.Text = "Bilgilerini Güncelle";
-            this.updateMyInfo_button.UseVisualStyleBackColor = true;
+            this.updateInfo_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.updateInfo_button.Location = new System.Drawing.Point(16, 219);
+            this.updateInfo_button.Name = "updateInfo_button";
+            this.updateInfo_button.Size = new System.Drawing.Size(174, 31);
+            this.updateInfo_button.TabIndex = 27;
+            this.updateInfo_button.Text = "Bilgilerini Güncelle";
+            this.updateInfo_button.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // deleteCustomer_button
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(16, 256);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 31);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Müşteri Sil";
-            this.button2.UseVisualStyleBackColor = true;
+            this.deleteCustomer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deleteCustomer_button.Location = new System.Drawing.Point(16, 256);
+            this.deleteCustomer_button.Name = "deleteCustomer_button";
+            this.deleteCustomer_button.Size = new System.Drawing.Size(174, 31);
+            this.deleteCustomer_button.TabIndex = 28;
+            this.deleteCustomer_button.Text = "Müşteri Sil";
+            this.deleteCustomer_button.UseVisualStyleBackColor = true;
             // 
             // selectedCustomerID_label
             // 
@@ -312,8 +314,10 @@
             // 
             // Form3
             // 
+            this.AcceptButton = this.login_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1151, 647);
             this.Controls.Add(this.customerTransaction_dataGridView);
             this.Controls.Add(this.customerProc_groupBox);
@@ -336,7 +340,7 @@
 
         private System.Windows.Forms.GroupBox login_groupBox;
         private System.Windows.Forms.Label id_label;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button login_button;
         private System.Windows.Forms.Label loginStatus_label;
         private System.Windows.Forms.Label idStatus_label;
         private System.Windows.Forms.ListBox customerList_listBox;
@@ -349,8 +353,8 @@
         private System.Windows.Forms.TextBox surname_textBox;
         private System.Windows.Forms.TextBox phone_textBox;
         private System.Windows.Forms.TextBox email_textBox;
-        private System.Windows.Forms.Button updateMyInfo_button;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button updateInfo_button;
+        private System.Windows.Forms.Button deleteCustomer_button;
         private System.Windows.Forms.Label deleteInfo_label;
         private System.Windows.Forms.CheckBox deleteCustomer_checkBox;
         private System.Windows.Forms.Label selectedCustomerID_label;

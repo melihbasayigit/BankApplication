@@ -85,6 +85,7 @@
             this.but_bankmanager.TabIndex = 2;
             this.but_bankmanager.Text = "BANKA MÜDÜRÜ";
             this.but_bankmanager.UseVisualStyleBackColor = false;
+            this.but_bankmanager.Click += new System.EventHandler(this.but_bankmanager_Click);
             // 
             // mainMenu
             // 

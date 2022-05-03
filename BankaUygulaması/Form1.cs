@@ -34,7 +34,7 @@ namespace BankaUygulaması
             try
             {
                 cnn.Open();
-                MessageBox.Show("Bağlantı başarıyla kuruldu.");
+                //MessageBox.Show("Bağlantı başarıyla kuruldu.");
                 cnn.Close();
             }
             catch (Exception ex)
@@ -53,6 +53,12 @@ namespace BankaUygulaması
         {
             Form3 form3 = new Form3();
             form3.ShowDialog();
+        }
+
+        private void but_bankmanager_Click(object sender, EventArgs e)
+        {
+            Form4 form4 =new Form4();
+            form4.ShowDialog();
         }
     }
 }
