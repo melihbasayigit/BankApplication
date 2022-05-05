@@ -30,36 +30,37 @@
         {
             this.customer_listBox = new System.Windows.Forms.ListBox();
             this.newCustomer_groupBox = new System.Windows.Forms.GroupBox();
-            this.name_textBox = new System.Windows.Forms.TextBox();
+            this.id_textBox = new System.Windows.Forms.TextBox();
             this.newCustomer_button = new System.Windows.Forms.Button();
             this.personInf_label = new System.Windows.Forms.Label();
             this.address_textBox = new System.Windows.Forms.RichTextBox();
-            this.surname_textBox = new System.Windows.Forms.TextBox();
+            this.name_textBox = new System.Windows.Forms.TextBox();
             this.phone_textBox = new System.Windows.Forms.TextBox();
             this.email_textBox = new System.Windows.Forms.TextBox();
             this.refresh_button = new System.Windows.Forms.Button();
             this.allTransaction_dataGridView = new System.Windows.Forms.DataGridView();
             this.bankSettings_groupBox = new System.Windows.Forms.GroupBox();
-            this.bankIncome_label = new System.Windows.Forms.Label();
-            this.bankOutcome_label = new System.Windows.Forms.Label();
-            this.bankProfit_label = new System.Windows.Forms.Label();
-            this.bankWallet_label = new System.Windows.Forms.Label();
-            this.nextMonth_button = new System.Windows.Forms.Button();
-            this.update_button = new System.Windows.Forms.Button();
+            this.addCurrency_button = new System.Windows.Forms.Button();
+            this.deadlock_button = new System.Windows.Forms.Button();
+            this.currencyAddValue_button = new System.Windows.Forms.TextBox();
+            this.currencyAddName_textBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.currencyCode_textBox = new System.Windows.Forms.TextBox();
+            this.listAction_button = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.currency_listBox = new System.Windows.Forms.ListBox();
+            this.currencyUpdValue_textBox = new System.Windows.Forms.TextBox();
+            this.salary_textBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.interestRatio_textBox = new System.Windows.Forms.TextBox();
             this.overdueInterest_textBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.salary_textBox = new System.Windows.Forms.TextBox();
-            this.currencyUpdValue_textBox = new System.Windows.Forms.TextBox();
-            this.currency_listBox = new System.Windows.Forms.ListBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.listAction_button = new System.Windows.Forms.Button();
-            this.currencyCode_textBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.currencyAddName_textBox = new System.Windows.Forms.TextBox();
-            this.currencyAddValue_button = new System.Windows.Forms.TextBox();
-            this.deadlock_button = new System.Windows.Forms.Button();
-            this.addCurrency_button = new System.Windows.Forms.Button();
+            this.update_button = new System.Windows.Forms.Button();
+            this.bankWallet_label = new System.Windows.Forms.Label();
+            this.bankProfit_label = new System.Windows.Forms.Label();
+            this.bankOutcome_label = new System.Windows.Forms.Label();
+            this.bankIncome_label = new System.Windows.Forms.Label();
+            this.nextMonth_button = new System.Windows.Forms.Button();
+            this.surname_textBox = new System.Windows.Forms.TextBox();
             this.newCustomer_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allTransaction_dataGridView)).BeginInit();
             this.bankSettings_groupBox.SuspendLayout();
@@ -78,11 +79,12 @@
             // 
             // newCustomer_groupBox
             // 
-            this.newCustomer_groupBox.Controls.Add(this.name_textBox);
+            this.newCustomer_groupBox.Controls.Add(this.surname_textBox);
+            this.newCustomer_groupBox.Controls.Add(this.id_textBox);
             this.newCustomer_groupBox.Controls.Add(this.newCustomer_button);
             this.newCustomer_groupBox.Controls.Add(this.personInf_label);
             this.newCustomer_groupBox.Controls.Add(this.address_textBox);
-            this.newCustomer_groupBox.Controls.Add(this.surname_textBox);
+            this.newCustomer_groupBox.Controls.Add(this.name_textBox);
             this.newCustomer_groupBox.Controls.Add(this.phone_textBox);
             this.newCustomer_groupBox.Controls.Add(this.email_textBox);
             this.newCustomer_groupBox.Location = new System.Drawing.Point(348, 12);
@@ -92,17 +94,17 @@
             this.newCustomer_groupBox.TabStop = false;
             this.newCustomer_groupBox.Text = "Yeni Müşteri Ekle";
             // 
-            // name_textBox
+            // id_textBox
             // 
-            this.name_textBox.Location = new System.Drawing.Point(70, 19);
-            this.name_textBox.Name = "name_textBox";
-            this.name_textBox.Size = new System.Drawing.Size(120, 20);
-            this.name_textBox.TabIndex = 20;
+            this.id_textBox.Location = new System.Drawing.Point(70, 19);
+            this.id_textBox.Name = "id_textBox";
+            this.id_textBox.Size = new System.Drawing.Size(120, 20);
+            this.id_textBox.TabIndex = 20;
             // 
             // newCustomer_button
             // 
             this.newCustomer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.newCustomer_button.Location = new System.Drawing.Point(16, 182);
+            this.newCustomer_button.Location = new System.Drawing.Point(16, 205);
             this.newCustomer_button.Name = "newCustomer_button";
             this.newCustomer_button.Size = new System.Drawing.Size(174, 31);
             this.newCustomer_button.TabIndex = 26;
@@ -114,35 +116,35 @@
             this.personInf_label.AutoSize = true;
             this.personInf_label.Location = new System.Drawing.Point(13, 26);
             this.personInf_label.Name = "personInf_label";
-            this.personInf_label.Size = new System.Drawing.Size(49, 143);
+            this.personInf_label.Size = new System.Drawing.Size(49, 169);
             this.personInf_label.TabIndex = 21;
-            this.personInf_label.Text = "Ad: \r\n\r\nSoyad:\r\n \r\nAdres:\r\n\r\n\r\n\r\nE-mail: \r\n\r\nTelefon: ";
+            this.personInf_label.Text = "ID:\r\n\r\nAd: \r\n\r\nSoyad:\r\n \r\nAdres:\r\n\r\n\r\n\r\nE-mail: \r\n\r\nTelefon: ";
             // 
             // address_textBox
             // 
-            this.address_textBox.Location = new System.Drawing.Point(70, 75);
+            this.address_textBox.Location = new System.Drawing.Point(70, 98);
             this.address_textBox.Name = "address_textBox";
             this.address_textBox.Size = new System.Drawing.Size(120, 49);
             this.address_textBox.TabIndex = 25;
             this.address_textBox.Text = "";
             // 
-            // surname_textBox
+            // name_textBox
             // 
-            this.surname_textBox.Location = new System.Drawing.Point(70, 46);
-            this.surname_textBox.Name = "surname_textBox";
-            this.surname_textBox.Size = new System.Drawing.Size(120, 20);
-            this.surname_textBox.TabIndex = 22;
+            this.name_textBox.Location = new System.Drawing.Point(70, 46);
+            this.name_textBox.Name = "name_textBox";
+            this.name_textBox.Size = new System.Drawing.Size(120, 20);
+            this.name_textBox.TabIndex = 22;
             // 
             // phone_textBox
             // 
-            this.phone_textBox.Location = new System.Drawing.Point(70, 156);
+            this.phone_textBox.Location = new System.Drawing.Point(70, 179);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(120, 20);
             this.phone_textBox.TabIndex = 24;
             // 
             // email_textBox
             // 
-            this.email_textBox.Location = new System.Drawing.Point(70, 130);
+            this.email_textBox.Location = new System.Drawing.Point(70, 153);
             this.email_textBox.Name = "email_textBox";
             this.email_textBox.Size = new System.Drawing.Size(120, 20);
             this.email_textBox.TabIndex = 23;
@@ -194,123 +196,72 @@
             this.bankSettings_groupBox.TabStop = false;
             this.bankSettings_groupBox.Text = "Banka Ayarları";
             // 
-            // bankIncome_label
+            // addCurrency_button
             // 
-            this.bankIncome_label.AutoSize = true;
-            this.bankIncome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankIncome_label.ForeColor = System.Drawing.Color.DarkGreen;
-            this.bankIncome_label.Location = new System.Drawing.Point(274, 13);
-            this.bankIncome_label.Name = "bankIncome_label";
-            this.bankIncome_label.Size = new System.Drawing.Size(172, 20);
-            this.bankIncome_label.TabIndex = 0;
-            this.bankIncome_label.Text = "Gelir: +30.000.00 TL";
+            this.addCurrency_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.addCurrency_button.Location = new System.Drawing.Point(278, 199);
+            this.addCurrency_button.Name = "addCurrency_button";
+            this.addCurrency_button.Size = new System.Drawing.Size(133, 31);
+            this.addCurrency_button.TabIndex = 39;
+            this.addCurrency_button.Text = "Para Birimi Ekle";
+            this.addCurrency_button.UseVisualStyleBackColor = true;
             // 
-            // bankOutcome_label
+            // deadlock_button
             // 
-            this.bankOutcome_label.AutoSize = true;
-            this.bankOutcome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankOutcome_label.ForeColor = System.Drawing.Color.Maroon;
-            this.bankOutcome_label.Location = new System.Drawing.Point(274, 38);
-            this.bankOutcome_label.Name = "bankOutcome_label";
-            this.bankOutcome_label.Size = new System.Drawing.Size(184, 20);
-            this.bankOutcome_label.TabIndex = 1;
-            this.bankOutcome_label.Text = "Gider: -15.000.000 TL";
+            this.deadlock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deadlock_button.Location = new System.Drawing.Point(420, 199);
+            this.deadlock_button.Name = "deadlock_button";
+            this.deadlock_button.Size = new System.Drawing.Size(133, 31);
+            this.deadlock_button.TabIndex = 32;
+            this.deadlock_button.Text = "Deadlock Analizi";
+            this.deadlock_button.UseVisualStyleBackColor = true;
             // 
-            // bankProfit_label
+            // currencyAddValue_button
             // 
-            this.bankProfit_label.AutoSize = true;
-            this.bankProfit_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankProfit_label.ForeColor = System.Drawing.Color.Chocolate;
-            this.bankProfit_label.Location = new System.Drawing.Point(274, 63);
-            this.bankProfit_label.Name = "bankProfit_label";
-            this.bankProfit_label.Size = new System.Drawing.Size(161, 20);
-            this.bankProfit_label.TabIndex = 2;
-            this.bankProfit_label.Text = "Kar: 25.000.000 TL";
-            this.bankProfit_label.Click += new System.EventHandler(this.label2_Click);
+            this.currencyAddValue_button.Location = new System.Drawing.Point(371, 173);
+            this.currencyAddValue_button.Name = "currencyAddValue_button";
+            this.currencyAddValue_button.Size = new System.Drawing.Size(120, 20);
+            this.currencyAddValue_button.TabIndex = 38;
             // 
-            // bankWallet_label
+            // currencyAddName_textBox
             // 
-            this.bankWallet_label.AutoSize = true;
-            this.bankWallet_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankWallet_label.ForeColor = System.Drawing.Color.Blue;
-            this.bankWallet_label.Location = new System.Drawing.Point(274, 88);
-            this.bankWallet_label.Name = "bankWallet_label";
-            this.bankWallet_label.Size = new System.Drawing.Size(202, 20);
-            this.bankWallet_label.TabIndex = 3;
-            this.bankWallet_label.Text = "Toplam: 150.000.000 TL";
-            this.bankWallet_label.Click += new System.EventHandler(this.label3_Click);
+            this.currencyAddName_textBox.Location = new System.Drawing.Point(371, 147);
+            this.currencyAddName_textBox.Name = "currencyAddName_textBox";
+            this.currencyAddName_textBox.Size = new System.Drawing.Size(120, 20);
+            this.currencyAddName_textBox.TabIndex = 37;
             // 
-            // nextMonth_button
+            // label5
             // 
-            this.nextMonth_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.nextMonth_button.Location = new System.Drawing.Point(12, 635);
-            this.nextMonth_button.Name = "nextMonth_button";
-            this.nextMonth_button.Size = new System.Drawing.Size(282, 31);
-            this.nextMonth_button.TabIndex = 31;
-            this.nextMonth_button.Text = "Sistemi Bir Ay İleri Al";
-            this.nextMonth_button.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(275, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 65);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Kur 3 Harfli Kodu:\r\n\r\nKur İsmi:\r\n\r\nKur Değeri:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // update_button
+            // currencyCode_textBox
             // 
-            this.update_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.update_button.Location = new System.Drawing.Point(123, 131);
-            this.update_button.Name = "update_button";
-            this.update_button.Size = new System.Drawing.Size(120, 31);
-            this.update_button.TabIndex = 27;
-            this.update_button.Text = "Güncelle";
-            this.update_button.UseVisualStyleBackColor = true;
+            this.currencyCode_textBox.Location = new System.Drawing.Point(371, 121);
+            this.currencyCode_textBox.Name = "currencyCode_textBox";
+            this.currencyCode_textBox.Size = new System.Drawing.Size(120, 20);
+            this.currencyCode_textBox.TabIndex = 35;
             // 
-            // interestRatio_textBox
+            // listAction_button
             // 
-            this.interestRatio_textBox.Location = new System.Drawing.Point(123, 26);
-            this.interestRatio_textBox.Name = "interestRatio_textBox";
-            this.interestRatio_textBox.Size = new System.Drawing.Size(120, 20);
-            this.interestRatio_textBox.TabIndex = 27;
-            // 
-            // overdueInterest_textBox
-            // 
-            this.overdueInterest_textBox.Location = new System.Drawing.Point(123, 53);
-            this.overdueInterest_textBox.Name = "overdueInterest_textBox";
-            this.overdueInterest_textBox.Size = new System.Drawing.Size(120, 20);
-            this.overdueInterest_textBox.TabIndex = 28;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 91);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Kredi Faiz Oranı:\r\n\r\nGecikme Faiz Oranı:\r\n\r\nÇalışan Ücreti:\r\n\r\nKur Değeri:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // salary_textBox
-            // 
-            this.salary_textBox.Location = new System.Drawing.Point(123, 79);
-            this.salary_textBox.Name = "salary_textBox";
-            this.salary_textBox.Size = new System.Drawing.Size(120, 20);
-            this.salary_textBox.TabIndex = 30;
-            // 
-            // currencyUpdValue_textBox
-            // 
-            this.currencyUpdValue_textBox.Location = new System.Drawing.Point(123, 105);
-            this.currencyUpdValue_textBox.Name = "currencyUpdValue_textBox";
-            this.currencyUpdValue_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyUpdValue_textBox.TabIndex = 31;
-            // 
-            // currency_listBox
-            // 
-            this.currency_listBox.FormattingEnabled = true;
-            this.currency_listBox.Location = new System.Drawing.Point(18, 131);
-            this.currency_listBox.Name = "currency_listBox";
-            this.currency_listBox.Size = new System.Drawing.Size(99, 95);
-            this.currency_listBox.TabIndex = 32;
+            this.listAction_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.listAction_button.Location = new System.Drawing.Point(123, 195);
+            this.listAction_button.Name = "listAction_button";
+            this.listAction_button.Size = new System.Drawing.Size(120, 31);
+            this.listAction_button.TabIndex = 34;
+            this.listAction_button.Text = "Listele";
+            this.listAction_button.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(123, 168);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            500,
             0,
             0,
             0});
@@ -328,66 +279,124 @@
             0,
             0});
             // 
-            // listAction_button
+            // currency_listBox
             // 
-            this.listAction_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.listAction_button.Location = new System.Drawing.Point(123, 195);
-            this.listAction_button.Name = "listAction_button";
-            this.listAction_button.Size = new System.Drawing.Size(120, 31);
-            this.listAction_button.TabIndex = 34;
-            this.listAction_button.Text = "Listele";
-            this.listAction_button.UseVisualStyleBackColor = true;
+            this.currency_listBox.FormattingEnabled = true;
+            this.currency_listBox.Location = new System.Drawing.Point(18, 131);
+            this.currency_listBox.Name = "currency_listBox";
+            this.currency_listBox.Size = new System.Drawing.Size(99, 95);
+            this.currency_listBox.TabIndex = 32;
             // 
-            // currencyCode_textBox
+            // currencyUpdValue_textBox
             // 
-            this.currencyCode_textBox.Location = new System.Drawing.Point(371, 121);
-            this.currencyCode_textBox.Name = "currencyCode_textBox";
-            this.currencyCode_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyCode_textBox.TabIndex = 35;
+            this.currencyUpdValue_textBox.Location = new System.Drawing.Point(123, 105);
+            this.currencyUpdValue_textBox.Name = "currencyUpdValue_textBox";
+            this.currencyUpdValue_textBox.Size = new System.Drawing.Size(120, 20);
+            this.currencyUpdValue_textBox.TabIndex = 31;
             // 
-            // label5
+            // salary_textBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(275, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 65);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Kur 3 Harfli Kodu:\r\n\r\nKur İsmi:\r\n\r\nKur Değeri:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.salary_textBox.Location = new System.Drawing.Point(123, 79);
+            this.salary_textBox.Name = "salary_textBox";
+            this.salary_textBox.Size = new System.Drawing.Size(120, 20);
+            this.salary_textBox.TabIndex = 30;
             // 
-            // currencyAddName_textBox
+            // label4
             // 
-            this.currencyAddName_textBox.Location = new System.Drawing.Point(371, 147);
-            this.currencyAddName_textBox.Name = "currencyAddName_textBox";
-            this.currencyAddName_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyAddName_textBox.TabIndex = 37;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 91);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Kredi Faiz Oranı:\r\n\r\nGecikme Faiz Oranı:\r\n\r\nÇalışan Ücreti:\r\n\r\nKur Değeri:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // currencyAddValue_button
+            // interestRatio_textBox
             // 
-            this.currencyAddValue_button.Location = new System.Drawing.Point(371, 173);
-            this.currencyAddValue_button.Name = "currencyAddValue_button";
-            this.currencyAddValue_button.Size = new System.Drawing.Size(120, 20);
-            this.currencyAddValue_button.TabIndex = 38;
+            this.interestRatio_textBox.Location = new System.Drawing.Point(123, 26);
+            this.interestRatio_textBox.Name = "interestRatio_textBox";
+            this.interestRatio_textBox.Size = new System.Drawing.Size(120, 20);
+            this.interestRatio_textBox.TabIndex = 27;
             // 
-            // deadlock_button
+            // overdueInterest_textBox
             // 
-            this.deadlock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.deadlock_button.Location = new System.Drawing.Point(420, 199);
-            this.deadlock_button.Name = "deadlock_button";
-            this.deadlock_button.Size = new System.Drawing.Size(133, 31);
-            this.deadlock_button.TabIndex = 32;
-            this.deadlock_button.Text = "Deadlock Analizi";
-            this.deadlock_button.UseVisualStyleBackColor = true;
+            this.overdueInterest_textBox.Location = new System.Drawing.Point(123, 53);
+            this.overdueInterest_textBox.Name = "overdueInterest_textBox";
+            this.overdueInterest_textBox.Size = new System.Drawing.Size(120, 20);
+            this.overdueInterest_textBox.TabIndex = 28;
             // 
-            // addCurrency_button
+            // update_button
             // 
-            this.addCurrency_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.addCurrency_button.Location = new System.Drawing.Point(278, 199);
-            this.addCurrency_button.Name = "addCurrency_button";
-            this.addCurrency_button.Size = new System.Drawing.Size(133, 31);
-            this.addCurrency_button.TabIndex = 39;
-            this.addCurrency_button.Text = "Para Birimi Ekle";
-            this.addCurrency_button.UseVisualStyleBackColor = true;
+            this.update_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.update_button.Location = new System.Drawing.Point(123, 131);
+            this.update_button.Name = "update_button";
+            this.update_button.Size = new System.Drawing.Size(120, 31);
+            this.update_button.TabIndex = 27;
+            this.update_button.Text = "Güncelle";
+            this.update_button.UseVisualStyleBackColor = true;
+            // 
+            // bankWallet_label
+            // 
+            this.bankWallet_label.AutoSize = true;
+            this.bankWallet_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bankWallet_label.ForeColor = System.Drawing.Color.Blue;
+            this.bankWallet_label.Location = new System.Drawing.Point(274, 88);
+            this.bankWallet_label.Name = "bankWallet_label";
+            this.bankWallet_label.Size = new System.Drawing.Size(202, 20);
+            this.bankWallet_label.TabIndex = 3;
+            this.bankWallet_label.Text = "Toplam: 150.000.000 TL";
+            this.bankWallet_label.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // bankProfit_label
+            // 
+            this.bankProfit_label.AutoSize = true;
+            this.bankProfit_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bankProfit_label.ForeColor = System.Drawing.Color.Chocolate;
+            this.bankProfit_label.Location = new System.Drawing.Point(274, 63);
+            this.bankProfit_label.Name = "bankProfit_label";
+            this.bankProfit_label.Size = new System.Drawing.Size(161, 20);
+            this.bankProfit_label.TabIndex = 2;
+            this.bankProfit_label.Text = "Kar: 25.000.000 TL";
+            this.bankProfit_label.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // bankOutcome_label
+            // 
+            this.bankOutcome_label.AutoSize = true;
+            this.bankOutcome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bankOutcome_label.ForeColor = System.Drawing.Color.Maroon;
+            this.bankOutcome_label.Location = new System.Drawing.Point(274, 38);
+            this.bankOutcome_label.Name = "bankOutcome_label";
+            this.bankOutcome_label.Size = new System.Drawing.Size(184, 20);
+            this.bankOutcome_label.TabIndex = 1;
+            this.bankOutcome_label.Text = "Gider: -15.000.000 TL";
+            // 
+            // bankIncome_label
+            // 
+            this.bankIncome_label.AutoSize = true;
+            this.bankIncome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bankIncome_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.bankIncome_label.Location = new System.Drawing.Point(274, 13);
+            this.bankIncome_label.Name = "bankIncome_label";
+            this.bankIncome_label.Size = new System.Drawing.Size(172, 20);
+            this.bankIncome_label.TabIndex = 0;
+            this.bankIncome_label.Text = "Gelir: +30.000.00 TL";
+            // 
+            // nextMonth_button
+            // 
+            this.nextMonth_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.nextMonth_button.Location = new System.Drawing.Point(12, 635);
+            this.nextMonth_button.Name = "nextMonth_button";
+            this.nextMonth_button.Size = new System.Drawing.Size(282, 31);
+            this.nextMonth_button.TabIndex = 31;
+            this.nextMonth_button.Text = "Sistemi Bir Ay İleri Al";
+            this.nextMonth_button.UseVisualStyleBackColor = true;
+            // 
+            // surname_textBox
+            // 
+            this.surname_textBox.Location = new System.Drawing.Point(70, 72);
+            this.surname_textBox.Name = "surname_textBox";
+            this.surname_textBox.Size = new System.Drawing.Size(120, 20);
+            this.surname_textBox.TabIndex = 27;
             // 
             // Form4
             // 
@@ -416,11 +425,11 @@
 
         private System.Windows.Forms.ListBox customer_listBox;
         private System.Windows.Forms.GroupBox newCustomer_groupBox;
-        private System.Windows.Forms.TextBox name_textBox;
+        private System.Windows.Forms.TextBox id_textBox;
         private System.Windows.Forms.Button newCustomer_button;
         private System.Windows.Forms.Label personInf_label;
         private System.Windows.Forms.RichTextBox address_textBox;
-        private System.Windows.Forms.TextBox surname_textBox;
+        private System.Windows.Forms.TextBox name_textBox;
         private System.Windows.Forms.TextBox phone_textBox;
         private System.Windows.Forms.TextBox email_textBox;
         private System.Windows.Forms.Button refresh_button;
@@ -446,5 +455,6 @@
         private System.Windows.Forms.TextBox interestRatio_textBox;
         private System.Windows.Forms.TextBox overdueInterest_textBox;
         private System.Windows.Forms.Button addCurrency_button;
+        private System.Windows.Forms.TextBox surname_textBox;
     }
 }

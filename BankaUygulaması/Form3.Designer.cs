@@ -36,6 +36,11 @@
             this.login_button = new System.Windows.Forms.Button();
             this.customerList_listBox = new System.Windows.Forms.ListBox();
             this.personelInformation_groupBox = new System.Windows.Forms.GroupBox();
+            this.deleteInfo_label = new System.Windows.Forms.Label();
+            this.deleteCustomer_checkBox = new System.Windows.Forms.CheckBox();
+            this.selectedCustomerID_label = new System.Windows.Forms.Label();
+            this.deleteCustomer_button = new System.Windows.Forms.Button();
+            this.updateInfo_button = new System.Windows.Forms.Button();
             this.name_textBox = new System.Windows.Forms.TextBox();
             this.insertNewCustomer_button = new System.Windows.Forms.Button();
             this.personInf_label = new System.Windows.Forms.Label();
@@ -43,16 +48,14 @@
             this.surname_textBox = new System.Windows.Forms.TextBox();
             this.phone_textBox = new System.Windows.Forms.TextBox();
             this.email_textBox = new System.Windows.Forms.TextBox();
-            this.updateInfo_button = new System.Windows.Forms.Button();
-            this.deleteCustomer_button = new System.Windows.Forms.Button();
-            this.selectedCustomerID_label = new System.Windows.Forms.Label();
-            this.deleteCustomer_checkBox = new System.Windows.Forms.CheckBox();
             this.customerProc_groupBox = new System.Windows.Forms.GroupBox();
             this.customerTransactions_button = new System.Windows.Forms.Button();
             this.customerRequests_button = new System.Windows.Forms.Button();
             this.customerFinancial_button = new System.Windows.Forms.Button();
-            this.deleteInfo_label = new System.Windows.Forms.Label();
             this.customerTransaction_dataGridView = new System.Windows.Forms.DataGridView();
+            this.customerID_textBox = new System.Windows.Forms.TextBox();
+            this.approve_button = new System.Windows.Forms.Button();
+            this.reject_button = new System.Windows.Forms.Button();
             this.login_groupBox.SuspendLayout();
             this.personelInformation_groupBox.SuspendLayout();
             this.customerProc_groupBox.SuspendLayout();
@@ -135,6 +138,7 @@
             // 
             // personelInformation_groupBox
             // 
+            this.personelInformation_groupBox.Controls.Add(this.customerID_textBox);
             this.personelInformation_groupBox.Controls.Add(this.deleteInfo_label);
             this.personelInformation_groupBox.Controls.Add(this.deleteCustomer_checkBox);
             this.personelInformation_groupBox.Controls.Add(this.selectedCustomerID_label);
@@ -154,9 +158,62 @@
             this.personelInformation_groupBox.TabStop = false;
             this.personelInformation_groupBox.Text = "Kişisel Bilgiler";
             // 
+            // deleteInfo_label
+            // 
+            this.deleteInfo_label.AutoSize = true;
+            this.deleteInfo_label.Location = new System.Drawing.Point(7, 376);
+            this.deleteInfo_label.Name = "deleteInfo_label";
+            this.deleteInfo_label.Size = new System.Drawing.Size(194, 52);
+            this.deleteInfo_label.TabIndex = 31;
+            this.deleteInfo_label.Text = "ÖNEMLİ: Müşteri silmek için tüm hesap-\r\nlarındaki bakiye \"0\" (SIFIR) olması \r\nger" +
+    "ekmektedir. Bu durum gerçekleş-\r\nmediği takdirde hesap silinemektedir.";
+            // 
+            // deleteCustomer_checkBox
+            // 
+            this.deleteCustomer_checkBox.AutoSize = true;
+            this.deleteCustomer_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deleteCustomer_checkBox.ForeColor = System.Drawing.Color.Red;
+            this.deleteCustomer_checkBox.Location = new System.Drawing.Point(16, 324);
+            this.deleteCustomer_checkBox.Name = "deleteCustomer_checkBox";
+            this.deleteCustomer_checkBox.Size = new System.Drawing.Size(173, 30);
+            this.deleteCustomer_checkBox.TabIndex = 29;
+            this.deleteCustomer_checkBox.Text = "Seçtiğim Müşteriyi Silmek \r\nİSTİYORUM.";
+            this.deleteCustomer_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // selectedCustomerID_label
+            // 
+            this.selectedCustomerID_label.AutoSize = true;
+            this.selectedCustomerID_label.Location = new System.Drawing.Point(160, 357);
+            this.selectedCustomerID_label.Name = "selectedCustomerID_label";
+            this.selectedCustomerID_label.Size = new System.Drawing.Size(29, 17);
+            this.selectedCustomerID_label.TabIndex = 29;
+            this.selectedCustomerID_label.Text = "3447";
+            this.selectedCustomerID_label.UseCompatibleTextRendering = true;
+            this.selectedCustomerID_label.Visible = false;
+            // 
+            // deleteCustomer_button
+            // 
+            this.deleteCustomer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deleteCustomer_button.Location = new System.Drawing.Point(16, 287);
+            this.deleteCustomer_button.Name = "deleteCustomer_button";
+            this.deleteCustomer_button.Size = new System.Drawing.Size(174, 31);
+            this.deleteCustomer_button.TabIndex = 28;
+            this.deleteCustomer_button.Text = "Müşteri Sil";
+            this.deleteCustomer_button.UseVisualStyleBackColor = true;
+            // 
+            // updateInfo_button
+            // 
+            this.updateInfo_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.updateInfo_button.Location = new System.Drawing.Point(16, 250);
+            this.updateInfo_button.Name = "updateInfo_button";
+            this.updateInfo_button.Size = new System.Drawing.Size(174, 31);
+            this.updateInfo_button.TabIndex = 27;
+            this.updateInfo_button.Text = "Bilgilerini Güncelle";
+            this.updateInfo_button.UseVisualStyleBackColor = true;
+            // 
             // name_textBox
             // 
-            this.name_textBox.Location = new System.Drawing.Point(70, 19);
+            this.name_textBox.Location = new System.Drawing.Point(70, 47);
             this.name_textBox.Name = "name_textBox";
             this.name_textBox.Size = new System.Drawing.Size(120, 20);
             this.name_textBox.TabIndex = 20;
@@ -164,7 +221,7 @@
             // insertNewCustomer_button
             // 
             this.insertNewCustomer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.insertNewCustomer_button.Location = new System.Drawing.Point(16, 182);
+            this.insertNewCustomer_button.Location = new System.Drawing.Point(16, 213);
             this.insertNewCustomer_button.Name = "insertNewCustomer_button";
             this.insertNewCustomer_button.Size = new System.Drawing.Size(174, 31);
             this.insertNewCustomer_button.TabIndex = 26;
@@ -176,13 +233,13 @@
             this.personInf_label.AutoSize = true;
             this.personInf_label.Location = new System.Drawing.Point(13, 26);
             this.personInf_label.Name = "personInf_label";
-            this.personInf_label.Size = new System.Drawing.Size(49, 143);
+            this.personInf_label.Size = new System.Drawing.Size(49, 169);
             this.personInf_label.TabIndex = 21;
-            this.personInf_label.Text = "Ad: \r\n\r\nSoyad:\r\n \r\nAdres:\r\n\r\n\r\n\r\nE-mail: \r\n\r\nTelefon: ";
+            this.personInf_label.Text = "ID:\r\n\r\nAd: \r\n\r\nSoyad:\r\n \r\nAdres:\r\n\r\n\r\n\r\nE-mail: \r\n\r\nTelefon: ";
             // 
             // address_textBox
             // 
-            this.address_textBox.Location = new System.Drawing.Point(70, 75);
+            this.address_textBox.Location = new System.Drawing.Point(70, 103);
             this.address_textBox.Name = "address_textBox";
             this.address_textBox.Size = new System.Drawing.Size(120, 49);
             this.address_textBox.TabIndex = 25;
@@ -190,67 +247,24 @@
             // 
             // surname_textBox
             // 
-            this.surname_textBox.Location = new System.Drawing.Point(70, 46);
+            this.surname_textBox.Location = new System.Drawing.Point(70, 74);
             this.surname_textBox.Name = "surname_textBox";
             this.surname_textBox.Size = new System.Drawing.Size(120, 20);
             this.surname_textBox.TabIndex = 22;
             // 
             // phone_textBox
             // 
-            this.phone_textBox.Location = new System.Drawing.Point(70, 156);
+            this.phone_textBox.Location = new System.Drawing.Point(70, 184);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(120, 20);
             this.phone_textBox.TabIndex = 24;
             // 
             // email_textBox
             // 
-            this.email_textBox.Location = new System.Drawing.Point(70, 130);
+            this.email_textBox.Location = new System.Drawing.Point(70, 158);
             this.email_textBox.Name = "email_textBox";
             this.email_textBox.Size = new System.Drawing.Size(120, 20);
             this.email_textBox.TabIndex = 23;
-            // 
-            // updateInfo_button
-            // 
-            this.updateInfo_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.updateInfo_button.Location = new System.Drawing.Point(16, 219);
-            this.updateInfo_button.Name = "updateInfo_button";
-            this.updateInfo_button.Size = new System.Drawing.Size(174, 31);
-            this.updateInfo_button.TabIndex = 27;
-            this.updateInfo_button.Text = "Bilgilerini Güncelle";
-            this.updateInfo_button.UseVisualStyleBackColor = true;
-            // 
-            // deleteCustomer_button
-            // 
-            this.deleteCustomer_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.deleteCustomer_button.Location = new System.Drawing.Point(16, 256);
-            this.deleteCustomer_button.Name = "deleteCustomer_button";
-            this.deleteCustomer_button.Size = new System.Drawing.Size(174, 31);
-            this.deleteCustomer_button.TabIndex = 28;
-            this.deleteCustomer_button.Text = "Müşteri Sil";
-            this.deleteCustomer_button.UseVisualStyleBackColor = true;
-            // 
-            // selectedCustomerID_label
-            // 
-            this.selectedCustomerID_label.AutoSize = true;
-            this.selectedCustomerID_label.Location = new System.Drawing.Point(160, 326);
-            this.selectedCustomerID_label.Name = "selectedCustomerID_label";
-            this.selectedCustomerID_label.Size = new System.Drawing.Size(29, 17);
-            this.selectedCustomerID_label.TabIndex = 29;
-            this.selectedCustomerID_label.Text = "3447";
-            this.selectedCustomerID_label.UseCompatibleTextRendering = true;
-            this.selectedCustomerID_label.Visible = false;
-            // 
-            // deleteCustomer_checkBox
-            // 
-            this.deleteCustomer_checkBox.AutoSize = true;
-            this.deleteCustomer_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.deleteCustomer_checkBox.ForeColor = System.Drawing.Color.Red;
-            this.deleteCustomer_checkBox.Location = new System.Drawing.Point(16, 293);
-            this.deleteCustomer_checkBox.Name = "deleteCustomer_checkBox";
-            this.deleteCustomer_checkBox.Size = new System.Drawing.Size(173, 30);
-            this.deleteCustomer_checkBox.TabIndex = 29;
-            this.deleteCustomer_checkBox.Text = "Seçtiğim Müşteriyi Silmek \r\nİSTİYORUM.";
-            this.deleteCustomer_checkBox.UseVisualStyleBackColor = true;
             // 
             // customerProc_groupBox
             // 
@@ -294,23 +308,42 @@
             this.customerFinancial_button.Text = "Müşteri Finansal Durumu";
             this.customerFinancial_button.UseVisualStyleBackColor = true;
             // 
-            // deleteInfo_label
-            // 
-            this.deleteInfo_label.AutoSize = true;
-            this.deleteInfo_label.Location = new System.Drawing.Point(7, 360);
-            this.deleteInfo_label.Name = "deleteInfo_label";
-            this.deleteInfo_label.Size = new System.Drawing.Size(194, 52);
-            this.deleteInfo_label.TabIndex = 31;
-            this.deleteInfo_label.Text = "ÖNEMLİ: Müşteri silmek için tüm hesap-\r\nlarındaki bakiye \"0\" (SIFIR) olması \r\nger" +
-    "ekmektedir. Bu durum gerçekleş-\r\nmediği takdirde hesap silinemektedir.";
-            // 
             // customerTransaction_dataGridView
             // 
             this.customerTransaction_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerTransaction_dataGridView.Location = new System.Drawing.Point(567, 24);
             this.customerTransaction_dataGridView.Name = "customerTransaction_dataGridView";
-            this.customerTransaction_dataGridView.Size = new System.Drawing.Size(554, 605);
+            this.customerTransaction_dataGridView.Size = new System.Drawing.Size(554, 568);
             this.customerTransaction_dataGridView.TabIndex = 31;
+            // 
+            // customerID_textBox
+            // 
+            this.customerID_textBox.Location = new System.Drawing.Point(70, 21);
+            this.customerID_textBox.Name = "customerID_textBox";
+            this.customerID_textBox.Size = new System.Drawing.Size(120, 20);
+            this.customerID_textBox.TabIndex = 32;
+            // 
+            // approve_button
+            // 
+            this.approve_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.approve_button.ForeColor = System.Drawing.Color.Green;
+            this.approve_button.Location = new System.Drawing.Point(567, 598);
+            this.approve_button.Name = "approve_button";
+            this.approve_button.Size = new System.Drawing.Size(327, 31);
+            this.approve_button.TabIndex = 29;
+            this.approve_button.Text = "ONAYLA";
+            this.approve_button.UseVisualStyleBackColor = true;
+            // 
+            // reject_button
+            // 
+            this.reject_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.reject_button.ForeColor = System.Drawing.Color.Red;
+            this.reject_button.Location = new System.Drawing.Point(900, 598);
+            this.reject_button.Name = "reject_button";
+            this.reject_button.Size = new System.Drawing.Size(221, 31);
+            this.reject_button.TabIndex = 32;
+            this.reject_button.Text = "REDDET";
+            this.reject_button.UseVisualStyleBackColor = true;
             // 
             // Form3
             // 
@@ -319,6 +352,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1151, 647);
+            this.Controls.Add(this.reject_button);
+            this.Controls.Add(this.approve_button);
             this.Controls.Add(this.customerTransaction_dataGridView);
             this.Controls.Add(this.customerProc_groupBox);
             this.Controls.Add(this.personelInformation_groupBox);
@@ -363,5 +398,8 @@
         private System.Windows.Forms.Button customerRequests_button;
         private System.Windows.Forms.Button customerFinancial_button;
         private System.Windows.Forms.DataGridView customerTransaction_dataGridView;
+        private System.Windows.Forms.TextBox customerID_textBox;
+        private System.Windows.Forms.Button approve_button;
+        private System.Windows.Forms.Button reject_button;
     }
 }

@@ -62,10 +62,5 @@ namespace BankaUygulaması
             cnn.Close();
         }
 
-        private void logout_button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
     }
 }
