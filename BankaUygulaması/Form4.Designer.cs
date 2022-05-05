@@ -30,6 +30,7 @@
         {
             this.customer_listBox = new System.Windows.Forms.ListBox();
             this.newCustomer_groupBox = new System.Windows.Forms.GroupBox();
+            this.surname_textBox = new System.Windows.Forms.TextBox();
             this.id_textBox = new System.Windows.Forms.TextBox();
             this.newCustomer_button = new System.Windows.Forms.Button();
             this.personInf_label = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.bankOutcome_label = new System.Windows.Forms.Label();
             this.bankIncome_label = new System.Windows.Forms.Label();
             this.nextMonth_button = new System.Windows.Forms.Button();
-            this.surname_textBox = new System.Windows.Forms.TextBox();
             this.newCustomer_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allTransaction_dataGridView)).BeginInit();
             this.bankSettings_groupBox.SuspendLayout();
@@ -76,6 +76,7 @@
             this.customer_listBox.Name = "customer_listBox";
             this.customer_listBox.Size = new System.Drawing.Size(282, 580);
             this.customer_listBox.TabIndex = 0;
+            this.customer_listBox.SelectedIndexChanged += new System.EventHandler(this.customer_listBox_SelectedIndexChanged);
             // 
             // newCustomer_groupBox
             // 
@@ -94,12 +95,20 @@
             this.newCustomer_groupBox.TabStop = false;
             this.newCustomer_groupBox.Text = "Yeni Müşteri Ekle";
             // 
+            // surname_textBox
+            // 
+            this.surname_textBox.Location = new System.Drawing.Point(70, 72);
+            this.surname_textBox.Name = "surname_textBox";
+            this.surname_textBox.Size = new System.Drawing.Size(120, 20);
+            this.surname_textBox.TabIndex = 27;
+            // 
             // id_textBox
             // 
             this.id_textBox.Location = new System.Drawing.Point(70, 19);
             this.id_textBox.Name = "id_textBox";
             this.id_textBox.Size = new System.Drawing.Size(120, 20);
             this.id_textBox.TabIndex = 20;
+            this.id_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.id_textBox_KeyPress);
             // 
             // newCustomer_button
             // 
@@ -110,6 +119,7 @@
             this.newCustomer_button.TabIndex = 26;
             this.newCustomer_button.Text = "Yeni Müşteri Ekle";
             this.newCustomer_button.UseVisualStyleBackColor = true;
+            this.newCustomer_button.Click += new System.EventHandler(this.newCustomer_button_Click);
             // 
             // personInf_label
             // 
@@ -390,13 +400,6 @@
             this.nextMonth_button.TabIndex = 31;
             this.nextMonth_button.Text = "Sistemi Bir Ay İleri Al";
             this.nextMonth_button.UseVisualStyleBackColor = true;
-            // 
-            // surname_textBox
-            // 
-            this.surname_textBox.Location = new System.Drawing.Point(70, 72);
-            this.surname_textBox.Name = "surname_textBox";
-            this.surname_textBox.Size = new System.Drawing.Size(120, 20);
-            this.surname_textBox.TabIndex = 27;
             // 
             // Form4
             // 
