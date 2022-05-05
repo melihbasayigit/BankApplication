@@ -46,27 +46,27 @@
             this.personelInformation_groupBox = new System.Windows.Forms.GroupBox();
             this.login_groupBox = new System.Windows.Forms.GroupBox();
             this.transfer_groupBox = new System.Windows.Forms.GroupBox();
-            this.myAccounts_groupBox = new System.Windows.Forms.GroupBox();
-            this.createAcc_button = new System.Windows.Forms.Button();
-            this.deleteAcc_button = new System.Windows.Forms.Button();
-            this.credit_groupBox = new System.Windows.Forms.GroupBox();
-            this.credit_textBox = new System.Windows.Forms.TextBox();
-            this.credit_label = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pay_button = new System.Windows.Forms.Button();
-            this.monthly_button = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.transferMoney_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.transferMoney_textBox = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.transferMoney_button = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.myAccounts_groupBox = new System.Windows.Forms.GroupBox();
+            this.deleteAcc_button = new System.Windows.Forms.Button();
+            this.createAcc_button = new System.Windows.Forms.Button();
+            this.credit_groupBox = new System.Windows.Forms.GroupBox();
+            this.pay_button = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.credit_label = new System.Windows.Forms.Label();
+            this.credit_textBox = new System.Windows.Forms.TextBox();
+            this.monthly_button = new System.Windows.Forms.Button();
+            this.customer_dataGridView = new System.Windows.Forms.DataGridView();
             this.personelInformation_groupBox.SuspendLayout();
             this.login_groupBox.SuspendLayout();
             this.transfer_groupBox.SuspendLayout();
             this.myAccounts_groupBox.SuspendLayout();
             this.credit_groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customer_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // login_button
@@ -259,109 +259,15 @@
             this.transfer_groupBox.TabStop = false;
             this.transfer_groupBox.Text = "Transfer İşlemlerim";
             // 
-            // myAccounts_groupBox
+            // transferMoney_button
             // 
-            this.myAccounts_groupBox.Controls.Add(this.deleteAcc_button);
-            this.myAccounts_groupBox.Controls.Add(this.createAcc_button);
-            this.myAccounts_groupBox.Controls.Add(this.createAcc_listBox);
-            this.myAccounts_groupBox.Controls.Add(this.deleteAcc_listBox);
-            this.myAccounts_groupBox.Location = new System.Drawing.Point(12, 336);
-            this.myAccounts_groupBox.Name = "myAccounts_groupBox";
-            this.myAccounts_groupBox.Size = new System.Drawing.Size(207, 255);
-            this.myAccounts_groupBox.TabIndex = 30;
-            this.myAccounts_groupBox.TabStop = false;
-            this.myAccounts_groupBox.Text = "Hesaplarım";
-            // 
-            // createAcc_button
-            // 
-            this.createAcc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.createAcc_button.Location = new System.Drawing.Point(5, 95);
-            this.createAcc_button.Name = "createAcc_button";
-            this.createAcc_button.Size = new System.Drawing.Size(185, 31);
-            this.createAcc_button.TabIndex = 27;
-            this.createAcc_button.Text = "Hesap Açma Talebi";
-            this.createAcc_button.UseVisualStyleBackColor = true;
-            // 
-            // deleteAcc_button
-            // 
-            this.deleteAcc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.deleteAcc_button.Location = new System.Drawing.Point(5, 208);
-            this.deleteAcc_button.Name = "deleteAcc_button";
-            this.deleteAcc_button.Size = new System.Drawing.Size(185, 31);
-            this.deleteAcc_button.TabIndex = 28;
-            this.deleteAcc_button.Text = "Hesap Silme Talebi";
-            this.deleteAcc_button.UseVisualStyleBackColor = true;
-            // 
-            // credit_groupBox
-            // 
-            this.credit_groupBox.Controls.Add(this.pay_button);
-            this.credit_groupBox.Controls.Add(this.button3);
-            this.credit_groupBox.Controls.Add(this.credit_label);
-            this.credit_groupBox.Controls.Add(this.credit_textBox);
-            this.credit_groupBox.Controls.Add(this.interestRatio_label);
-            this.credit_groupBox.Location = new System.Drawing.Point(241, 420);
-            this.credit_groupBox.Name = "credit_groupBox";
-            this.credit_groupBox.Size = new System.Drawing.Size(225, 134);
-            this.credit_groupBox.TabIndex = 30;
-            this.credit_groupBox.TabStop = false;
-            this.credit_groupBox.Text = "Kredi İşlemlerim";
-            // 
-            // credit_textBox
-            // 
-            this.credit_textBox.Location = new System.Drawing.Point(82, 23);
-            this.credit_textBox.Margin = new System.Windows.Forms.Padding(2);
-            this.credit_textBox.Name = "credit_textBox";
-            this.credit_textBox.Size = new System.Drawing.Size(125, 20);
-            this.credit_textBox.TabIndex = 31;
-            // 
-            // credit_label
-            // 
-            this.credit_label.AutoSize = true;
-            this.credit_label.Location = new System.Drawing.Point(29, 26);
-            this.credit_label.Name = "credit_label";
-            this.credit_label.Size = new System.Drawing.Size(39, 13);
-            this.credit_label.TabIndex = 32;
-            this.credit_label.Text = "Miktar:";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(82, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 31);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Kredi Çek";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // pay_button
-            // 
-            this.pay_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.pay_button.Location = new System.Drawing.Point(14, 85);
-            this.pay_button.Name = "pay_button";
-            this.pay_button.Size = new System.Drawing.Size(193, 31);
-            this.pay_button.TabIndex = 29;
-            this.pay_button.Text = "Kredi Borcu Öde";
-            this.pay_button.UseVisualStyleBackColor = true;
-            // 
-            // monthly_button
-            // 
-            this.monthly_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.monthly_button.Location = new System.Drawing.Point(241, 560);
-            this.monthly_button.Name = "monthly_button";
-            this.monthly_button.Size = new System.Drawing.Size(225, 31);
-            this.monthly_button.TabIndex = 33;
-            this.monthly_button.Text = "Aylık Özet";
-            this.monthly_button.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button5.Location = new System.Drawing.Point(9, 45);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(197, 31);
-            this.button5.TabIndex = 33;
-            this.button5.Text = "Para Yatır";
-            this.button5.UseVisualStyleBackColor = true;
+            this.transferMoney_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.transferMoney_button.Location = new System.Drawing.Point(9, 253);
+            this.transferMoney_button.Name = "transferMoney_button";
+            this.transferMoney_button.Size = new System.Drawing.Size(197, 31);
+            this.transferMoney_button.TabIndex = 37;
+            this.transferMoney_button.Text = "Para Gönder";
+            this.transferMoney_button.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -390,30 +296,124 @@
             this.button6.Text = "Para Çek";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // transferMoney_button
+            // button5
             // 
-            this.transferMoney_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.transferMoney_button.Location = new System.Drawing.Point(9, 253);
-            this.transferMoney_button.Name = "transferMoney_button";
-            this.transferMoney_button.Size = new System.Drawing.Size(197, 31);
-            this.transferMoney_button.TabIndex = 37;
-            this.transferMoney_button.Text = "Para Gönder";
-            this.transferMoney_button.UseVisualStyleBackColor = true;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button5.Location = new System.Drawing.Point(9, 45);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(197, 31);
+            this.button5.TabIndex = 33;
+            this.button5.Text = "Para Yatır";
+            this.button5.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // myAccounts_groupBox
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(472, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(590, 579);
-            this.dataGridView1.TabIndex = 34;
+            this.myAccounts_groupBox.Controls.Add(this.deleteAcc_button);
+            this.myAccounts_groupBox.Controls.Add(this.createAcc_button);
+            this.myAccounts_groupBox.Controls.Add(this.createAcc_listBox);
+            this.myAccounts_groupBox.Controls.Add(this.deleteAcc_listBox);
+            this.myAccounts_groupBox.Location = new System.Drawing.Point(12, 336);
+            this.myAccounts_groupBox.Name = "myAccounts_groupBox";
+            this.myAccounts_groupBox.Size = new System.Drawing.Size(207, 255);
+            this.myAccounts_groupBox.TabIndex = 30;
+            this.myAccounts_groupBox.TabStop = false;
+            this.myAccounts_groupBox.Text = "Hesaplarım";
+            // 
+            // deleteAcc_button
+            // 
+            this.deleteAcc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deleteAcc_button.Location = new System.Drawing.Point(5, 208);
+            this.deleteAcc_button.Name = "deleteAcc_button";
+            this.deleteAcc_button.Size = new System.Drawing.Size(185, 31);
+            this.deleteAcc_button.TabIndex = 28;
+            this.deleteAcc_button.Text = "Hesap Silme Talebi";
+            this.deleteAcc_button.UseVisualStyleBackColor = true;
+            // 
+            // createAcc_button
+            // 
+            this.createAcc_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.createAcc_button.Location = new System.Drawing.Point(5, 95);
+            this.createAcc_button.Name = "createAcc_button";
+            this.createAcc_button.Size = new System.Drawing.Size(185, 31);
+            this.createAcc_button.TabIndex = 27;
+            this.createAcc_button.Text = "Hesap Açma Talebi";
+            this.createAcc_button.UseVisualStyleBackColor = true;
+            // 
+            // credit_groupBox
+            // 
+            this.credit_groupBox.Controls.Add(this.pay_button);
+            this.credit_groupBox.Controls.Add(this.button3);
+            this.credit_groupBox.Controls.Add(this.credit_label);
+            this.credit_groupBox.Controls.Add(this.credit_textBox);
+            this.credit_groupBox.Controls.Add(this.interestRatio_label);
+            this.credit_groupBox.Location = new System.Drawing.Point(241, 420);
+            this.credit_groupBox.Name = "credit_groupBox";
+            this.credit_groupBox.Size = new System.Drawing.Size(225, 134);
+            this.credit_groupBox.TabIndex = 30;
+            this.credit_groupBox.TabStop = false;
+            this.credit_groupBox.Text = "Kredi İşlemlerim";
+            // 
+            // pay_button
+            // 
+            this.pay_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.pay_button.Location = new System.Drawing.Point(14, 85);
+            this.pay_button.Name = "pay_button";
+            this.pay_button.Size = new System.Drawing.Size(193, 31);
+            this.pay_button.TabIndex = 29;
+            this.pay_button.Text = "Kredi Borcu Öde";
+            this.pay_button.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.Location = new System.Drawing.Point(82, 48);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 31);
+            this.button3.TabIndex = 27;
+            this.button3.Text = "Kredi Çek";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // credit_label
+            // 
+            this.credit_label.AutoSize = true;
+            this.credit_label.Location = new System.Drawing.Point(29, 26);
+            this.credit_label.Name = "credit_label";
+            this.credit_label.Size = new System.Drawing.Size(39, 13);
+            this.credit_label.TabIndex = 32;
+            this.credit_label.Text = "Miktar:";
+            // 
+            // credit_textBox
+            // 
+            this.credit_textBox.Location = new System.Drawing.Point(82, 23);
+            this.credit_textBox.Margin = new System.Windows.Forms.Padding(2);
+            this.credit_textBox.Name = "credit_textBox";
+            this.credit_textBox.Size = new System.Drawing.Size(125, 20);
+            this.credit_textBox.TabIndex = 31;
+            // 
+            // monthly_button
+            // 
+            this.monthly_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.monthly_button.Location = new System.Drawing.Point(241, 560);
+            this.monthly_button.Name = "monthly_button";
+            this.monthly_button.Size = new System.Drawing.Size(225, 31);
+            this.monthly_button.TabIndex = 33;
+            this.monthly_button.Text = "Aylık Özet";
+            this.monthly_button.UseVisualStyleBackColor = true;
+            // 
+            // customer_dataGridView
+            // 
+            this.customer_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customer_dataGridView.Location = new System.Drawing.Point(472, 12);
+            this.customer_dataGridView.Name = "customer_dataGridView";
+            this.customer_dataGridView.Size = new System.Drawing.Size(590, 579);
+            this.customer_dataGridView.TabIndex = 34;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 603);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.customer_dataGridView);
             this.Controls.Add(this.monthly_button);
             this.Controls.Add(this.credit_groupBox);
             this.Controls.Add(this.myAccounts_groupBox);
@@ -433,7 +433,7 @@
             this.myAccounts_groupBox.ResumeLayout(false);
             this.credit_groupBox.ResumeLayout(false);
             this.credit_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customer_dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -472,6 +472,6 @@
         private System.Windows.Forms.Label credit_label;
         private System.Windows.Forms.TextBox credit_textBox;
         private System.Windows.Forms.Button monthly_button;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView customer_dataGridView;
     }
 }
