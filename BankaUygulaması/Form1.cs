@@ -39,7 +39,7 @@ namespace BankaUygulaması
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bağlantı kurulamadı");
+                MessageBox.Show("Bağlantı kurulamadı" + ex.Message);
             }
         }
 

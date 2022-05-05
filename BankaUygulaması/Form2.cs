@@ -37,6 +37,7 @@ namespace BankaUygulaması
             catch (Exception ex)
             {
                 loginStatus_label.Text = "Veritabanına bağlanmada sıkıntı çıktı. Lütfen daha sonra tekrar deneyin.";
+                MessageBox.Show(ex.Message);
             }
             // Giriş kontrol 
             loginCmd = new SqlCommand();

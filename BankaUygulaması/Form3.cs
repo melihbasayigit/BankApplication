@@ -40,7 +40,7 @@ namespace BankaUygulaması
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Veritabanı bağlantısı sağlanamdı.");
+                    MessageBox.Show("Veritabanı bağlantısı sağlanamdı." + ex.Message);
                 }
                 if (!isLogin)
                 {

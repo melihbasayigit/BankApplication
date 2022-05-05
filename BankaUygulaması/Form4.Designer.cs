@@ -253,9 +253,11 @@
             // currencyCode_textBox
             // 
             this.currencyCode_textBox.Location = new System.Drawing.Point(371, 121);
+            this.currencyCode_textBox.MaxLength = 3;
             this.currencyCode_textBox.Name = "currencyCode_textBox";
             this.currencyCode_textBox.Size = new System.Drawing.Size(120, 20);
             this.currencyCode_textBox.TabIndex = 35;
+            this.currencyCode_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.currencyCode_textBox_KeyPress);
             // 
             // listAction_button
             // 
@@ -296,6 +298,7 @@
             this.currency_listBox.Name = "currency_listBox";
             this.currency_listBox.Size = new System.Drawing.Size(99, 95);
             this.currency_listBox.TabIndex = 32;
+            this.currency_listBox.SelectedValueChanged += new System.EventHandler(this.currency_listBox_SelectedValueChanged);
             // 
             // currencyUpdValue_textBox
             // 
