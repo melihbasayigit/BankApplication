@@ -121,6 +121,7 @@
             this.Acc_listbox.Name = "Acc_listbox";
             this.Acc_listbox.Size = new System.Drawing.Size(197, 106);
             this.Acc_listbox.TabIndex = 9;
+            this.Acc_listbox.SelectedValueChanged += new System.EventHandler(this.Acc_listbox_SelectedValueChanged);
             // 
             // loginStatus_label
             // 

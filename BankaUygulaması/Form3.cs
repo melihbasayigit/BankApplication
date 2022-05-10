@@ -81,5 +81,10 @@ namespace BankaUygulaması
             }
             
         }
+
+        private void customerList_listBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

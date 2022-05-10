@@ -29,21 +29,61 @@ namespace BankaUygulaması
             // Veritabanı kontrol işlemleri
             connectionString = @"Data Source=localhost;Initial Catalog=bank;Integrated Security=True";
             cnn = new SqlConnection(connectionString);
+            // Giriş kontrol 
+            loginCmd = new SqlCommand();
+            loginCmd.Connection = cnn;
+            loginCmd.CommandText = "SELECT * FROM Customer WHERE ID = @customerID";
+            loginCmd.Parameters.AddWithValue("@customerID",customerID_textBox.Text);
             try
             {
                 cnn.Open();
-                //cnn.Close();
+                loginDr = loginCmd.ExecuteReader();
+                if(loginDr.Read())
+                {
+                    loginStatus_label.ForeColor = System.Drawing.Color.Green;
+                    loginStatus_label.Text = loginDr["Name"].ToString() + " " + loginDr["Surname"].ToString();
+                    address_textBox.Text = loginDr["Address"].ToString();
+                    phone_textBox.Text = loginDr["Phone"].ToString();
+                    email_textBox.Text = loginDr["Email"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Veritabanından veri çekilemedi.");
+                }
+            }
+            catch   (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex.Message);
+            }
+            loginDr.Close();
+            // 
+            loginCmd = new SqlCommand();
+            loginCmd.Connection = cnn;
+            loginCmd.CommandText = "SELECT * FROM Account WHERE ID = @customerID";
+            loginCmd.Parameters.AddWithValue("@customerID", customerID_textBox.Text);
+            try
+            {
+                loginDr = loginCmd.ExecuteReader();
+                deleteAcc_listBox.Items.Clear();
+                Acc_listbox.Items.Clear();
+                while( loginDr.Read())
+                {
+                    Acc_listbox.Items.Add(loginDr["AccountNumber"].ToString() + "_" + loginDr["CurCode"].ToString());
+                    deleteAcc_listBox.Items.Add(loginDr["AccountNumber"].ToString() + "_" + loginDr["CurCode"].ToString());
+                }
+                loginDr.Close();
             }
             catch (Exception ex)
             {
-                loginStatus_label.Text = "Veritabanına bağlanmada sıkıntı çıktı. Lütfen daha sonra tekrar deneyin.";
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Hata: " + ex.Message);
             }
-            // Giriş kontrol 
+
+            //
             loginCmd = new SqlCommand();
             loginCmd.Connection = cnn;
             loginCmd.CommandText = "SELECT CurrencyName FROM Currency";
             loginDr = loginCmd.ExecuteReader();
+            createAcc_listBox.Items.Clear();
             while (loginDr.Read())
             {
                 createAcc_listBox.Items.Add(loginDr["CurrencyName"]);
@@ -60,8 +100,12 @@ namespace BankaUygulaması
             {
                 interestRatio_label.Text = "Faiz Oranı: %\n" + settingsDr["ValueFloat"].ToString();
             }
-            cnn.Close();
+            //cnn.Close();
         }
 
+        private void Acc_listbox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //
+        }
     }
 }

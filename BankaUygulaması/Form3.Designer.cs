@@ -36,6 +36,7 @@
             this.login_button = new System.Windows.Forms.Button();
             this.customerList_listBox = new System.Windows.Forms.ListBox();
             this.personelInformation_groupBox = new System.Windows.Forms.GroupBox();
+            this.customerID_textBox = new System.Windows.Forms.TextBox();
             this.deleteInfo_label = new System.Windows.Forms.Label();
             this.deleteCustomer_checkBox = new System.Windows.Forms.CheckBox();
             this.selectedCustomerID_label = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.customerRequests_button = new System.Windows.Forms.Button();
             this.customerFinancial_button = new System.Windows.Forms.Button();
             this.customerTransaction_dataGridView = new System.Windows.Forms.DataGridView();
-            this.customerID_textBox = new System.Windows.Forms.TextBox();
             this.approve_button = new System.Windows.Forms.Button();
             this.reject_button = new System.Windows.Forms.Button();
             this.login_groupBox.SuspendLayout();
@@ -135,6 +135,7 @@
             this.customerList_listBox.Name = "customerList_listBox";
             this.customerList_listBox.Size = new System.Drawing.Size(215, 454);
             this.customerList_listBox.TabIndex = 1;
+            this.customerList_listBox.SelectedValueChanged += new System.EventHandler(this.customerList_listBox_SelectedValueChanged);
             // 
             // personelInformation_groupBox
             // 
@@ -157,6 +158,13 @@
             this.personelInformation_groupBox.TabIndex = 28;
             this.personelInformation_groupBox.TabStop = false;
             this.personelInformation_groupBox.Text = "Kişisel Bilgiler";
+            // 
+            // customerID_textBox
+            // 
+            this.customerID_textBox.Location = new System.Drawing.Point(70, 21);
+            this.customerID_textBox.Name = "customerID_textBox";
+            this.customerID_textBox.Size = new System.Drawing.Size(120, 20);
+            this.customerID_textBox.TabIndex = 32;
             // 
             // deleteInfo_label
             // 
@@ -315,13 +323,6 @@
             this.customerTransaction_dataGridView.Name = "customerTransaction_dataGridView";
             this.customerTransaction_dataGridView.Size = new System.Drawing.Size(554, 568);
             this.customerTransaction_dataGridView.TabIndex = 31;
-            // 
-            // customerID_textBox
-            // 
-            this.customerID_textBox.Location = new System.Drawing.Point(70, 21);
-            this.customerID_textBox.Name = "customerID_textBox";
-            this.customerID_textBox.Size = new System.Drawing.Size(120, 20);
-            this.customerID_textBox.TabIndex = 32;
             // 
             // approve_button
             // 

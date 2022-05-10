@@ -43,7 +43,7 @@
             this.bankSettings_groupBox = new System.Windows.Forms.GroupBox();
             this.addCurrency_button = new System.Windows.Forms.Button();
             this.deadlock_button = new System.Windows.Forms.Button();
-            this.currencyAddValue_button = new System.Windows.Forms.TextBox();
+            this.currencyAddValue_textBox = new System.Windows.Forms.TextBox();
             this.currencyAddName_textBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.currencyCode_textBox = new System.Windows.Forms.TextBox();
@@ -182,7 +182,7 @@
             // 
             this.bankSettings_groupBox.Controls.Add(this.addCurrency_button);
             this.bankSettings_groupBox.Controls.Add(this.deadlock_button);
-            this.bankSettings_groupBox.Controls.Add(this.currencyAddValue_button);
+            this.bankSettings_groupBox.Controls.Add(this.currencyAddValue_textBox);
             this.bankSettings_groupBox.Controls.Add(this.currencyAddName_textBox);
             this.bankSettings_groupBox.Controls.Add(this.label5);
             this.bankSettings_groupBox.Controls.Add(this.currencyCode_textBox);
@@ -215,6 +215,7 @@
             this.addCurrency_button.TabIndex = 39;
             this.addCurrency_button.Text = "Para Birimi Ekle";
             this.addCurrency_button.UseVisualStyleBackColor = true;
+            this.addCurrency_button.Click += new System.EventHandler(this.addCurrency_button_Click);
             // 
             // deadlock_button
             // 
@@ -226,12 +227,12 @@
             this.deadlock_button.Text = "Deadlock Analizi";
             this.deadlock_button.UseVisualStyleBackColor = true;
             // 
-            // currencyAddValue_button
+            // currencyAddValue_textBox
             // 
-            this.currencyAddValue_button.Location = new System.Drawing.Point(371, 173);
-            this.currencyAddValue_button.Name = "currencyAddValue_button";
-            this.currencyAddValue_button.Size = new System.Drawing.Size(120, 20);
-            this.currencyAddValue_button.TabIndex = 38;
+            this.currencyAddValue_textBox.Location = new System.Drawing.Point(371, 173);
+            this.currencyAddValue_textBox.Name = "currencyAddValue_textBox";
+            this.currencyAddValue_textBox.Size = new System.Drawing.Size(120, 20);
+            this.currencyAddValue_textBox.TabIndex = 38;
             // 
             // currencyAddName_textBox
             // 
@@ -347,6 +348,7 @@
             this.update_button.TabIndex = 27;
             this.update_button.Text = "Güncelle";
             this.update_button.UseVisualStyleBackColor = true;
+            this.update_button.Click += new System.EventHandler(this.update_button_Click);
             // 
             // bankWallet_label
             // 
@@ -448,7 +450,7 @@
         private System.Windows.Forms.Button update_button;
         private System.Windows.Forms.Button nextMonth_button;
         private System.Windows.Forms.Button deadlock_button;
-        private System.Windows.Forms.TextBox currencyAddValue_button;
+        private System.Windows.Forms.TextBox currencyAddValue_textBox;
         private System.Windows.Forms.TextBox currencyAddName_textBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox currencyCode_textBox;
