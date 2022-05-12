@@ -45,16 +45,16 @@ namespace BankaUygulaması
                 if (!isLogin)
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "SELECT Name, Surname FROM Worker WHERE ID = @WorkerID"; // add here sql command for to list all customers belong to the representative
+                    cmd.CommandText = "SELECT ID, Name, Surname FROM Worker WHERE ID = @WorkerID"; // add here sql command for to list all customers belong to the representative
                     cmd.Parameters.Add("@WorkerID", SqlDbType.Int);
                     cmd.Parameters["@WorkerID"].Value = id_textBox.Text;
                     cmd.Prepare();
                     dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        customerList_listBox.Items.Add(dr["Name"] + " " + dr["Surname"]);
-
+                        customerList_listBox.Items.Add(dr["ID"]);
                     }
+                    dr.Close();
                 }
                 if (customerList_listBox.Items.Count == 0)
                 {
@@ -64,14 +64,37 @@ namespace BankaUygulaması
                 else
                 {
                     isLogin = true;
+                    id_textBox.ReadOnly = true;
+                    login_button.Enabled = false;
                     idStatus_label.Visible = true;
                     idStatus_label.Text = id_textBox.Text;
                     idStatus_label.ForeColor = Color.DarkBlue;
                     loginStatus_label.Text = "Başarılı bir şekilde giriş yaptınız.";
                     loginStatus_label.ForeColor = Color.Green;
+                    customerList_listBox.Items.Clear();
+                    // yeni sorgu ile kullanıcıları çek
+                    refreshTheList();
                 }
             }
             
+        }
+
+        private void refreshTheList()
+        {
+            SqlCommand cmdCustomer = new SqlCommand();
+            SqlDataReader drCustomer;
+            cmdCustomer.CommandText = "SELECT ID FROM Customer WHERE repID = @workerID";
+            cmdCustomer.Parameters.Add("@WorkerID", SqlDbType.Int);
+            cmdCustomer.Parameters["@WorkerID"].Value = id_textBox.Text;
+            cmdCustomer.Connection = con;
+            cmdCustomer.Prepare();
+            drCustomer = cmdCustomer.ExecuteReader();
+            customerList_listBox.Items.Clear();
+            while (drCustomer.Read())
+            {
+                customerList_listBox.Items.Add(drCustomer["ID"]);
+            }
+            drCustomer.Close();
         }
 
         private void id_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -84,7 +107,295 @@ namespace BankaUygulaması
 
         private void customerList_listBox_SelectedValueChanged(object sender, EventArgs e)
         {
+            SqlCommand lscmd = new SqlCommand();
+            SqlDataReader reader;
+            lscmd.Connection = con;
+            lscmd.CommandText = "SELECT * FROM Customer WHERE ID = @cusID";
+            lscmd.Parameters.Add("@cusID",SqlDbType.Int);
+            lscmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
+            lscmd.Prepare();
+            reader = lscmd.ExecuteReader();
+            while (reader.Read()) 
+            {
+                customerID_textBox.Text = reader["ID"].ToString();
+                name_textBox.Text = reader["Name"].ToString();
+                surname_textBox.Text = reader["Surname"].ToString();
+                address_textBox.Text = reader["Address"].ToString();
+                email_textBox.Text = reader["Email"].ToString();
+                phone_textBox.Text = reader["Phone"].ToString();
+            }
+            reader.Close();
+        }
 
+        private void insertNewCustomer_button_Click(object sender, EventArgs e)
+        {
+            if(isLogin)
+            {
+                if(String.IsNullOrEmpty(id_textBox.Text) || String.IsNullOrEmpty(name_textBox.Text) || String.IsNullOrEmpty(surname_textBox.Text) || 
+                    String.IsNullOrEmpty(address_textBox.Text) || String.IsNullOrEmpty(email_textBox.Text) || String.IsNullOrEmpty(phone_textBox.Text))
+                {
+                    MessageBox.Show("Lutfen tum alanlari doldurunuz.");
+                }
+                else
+                {
+                    // Yeni musteri ekleme islemi
+                }
+            }
+            else
+            {
+                MessageBox.Show("Giris yapmadan yeni musteri ekleme islemi yapılamamktadır.");
+            }
+        }
+
+        private void deleteCustomer_button_Click(object sender, EventArgs e)
+        {
+            if(deleteCustomer_checkBox.Checked)
+            {
+                if(customerList_listBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Lutfen listeden silmek istediğiniz müşteriyi seçiniz.");
+                }
+                else
+                {
+                    string checkBal = "YOK";
+                    // Check balances all accounts belong to the customer.
+                    cmd = new SqlCommand();
+                    cmd.CommandText = "SELECT SUM(Balance) FROM Account WHERE ID = @cusID";
+                    cmd.Parameters.Add("@cusID", SqlDbType.Int);
+                    cmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
+                    cmd.Connection = con;
+                    cmd.Prepare();
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        checkBal = dr[0].ToString();
+                    }
+                    dr.Close();
+                    // if all zero
+                    if (checkBal == "0" || float.Parse(checkBal) < 0.01f)
+                    {
+                        SqlCommand dlCmd = new SqlCommand();
+                        dlCmd.CommandText = "DELETE FROM Account WHERE ID = @cusID";
+                        dlCmd.Parameters.Add("@cusID", SqlDbType.Int);
+                        dlCmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
+                        dlCmd.Connection = con;
+                        dlCmd.Prepare();
+                        dlCmd.ExecuteNonQuery();
+                        dlCmd = new SqlCommand();
+                        dlCmd.CommandText = "DELETE FROM Customer WHERE ID = @cusID";
+                        dlCmd.Parameters.Add("@cusID", SqlDbType.Int);
+                        dlCmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
+                        dlCmd.Connection = con;
+                        dlCmd.Prepare();
+                        dlCmd.ExecuteNonQuery();
+                        MessageBox.Show("Musteri silinmistir.");
+                        refreshTheList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hesapta para bulunmaktadır.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lutfen müşteri silim kutusunu onaylayınız.");
+            }
+            
+        }
+
+        private void enableButtons()
+        {
+            approve_button.Enabled = true;
+            reject_button.Enabled = true;
+        }
+
+        private void disableButtons()
+        {
+            approve_button.Enabled = false;
+            reject_button.Enabled = false;
+        }
+
+        private void updateInfo_button_Click(object sender, EventArgs e)
+        {
+            if(customerList_listBox.SelectedItem != null)
+            {
+                if(String.IsNullOrEmpty(id_textBox.Text) || String.IsNullOrEmpty(name_textBox.Text) || String.IsNullOrEmpty(surname_textBox.Text) || String.IsNullOrEmpty(
+                    address_textBox.Text) || String.IsNullOrEmpty(email_textBox.Text) || String.IsNullOrEmpty(phone_textBox.Text))
+                {
+                    MessageBox.Show("Tüm alanları doldurmanız gereklidir.");
+                }
+                else
+                {
+                    cmd = new SqlCommand();
+                    cmd.CommandText = "UPDATE Customer SET ID = @newid, Name = @name, Surname = @surname, Address = @address, Email = @email, Phone = @phone" +
+                        " WHERE ID = @id";
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@newid", id_textBox.Text);
+                    cmd.Parameters.AddWithValue("@name", name_textBox.Text);
+                    cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
+                    cmd.Parameters.AddWithValue("@address", address_textBox.Text);
+                    cmd.Parameters.AddWithValue("@email", email_textBox.Text);
+                    cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
+                    cmd.Parameters.Add("@id", SqlDbType.Int);
+                    cmd.Parameters["@id"].Value = Convert.ToInt32(customerList_listBox.SelectedItem.ToString());
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Kullanıcı güncellendi.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("HATA: " + ex.Message);
+                    }
+                    refreshTheList();
+                }
+            }
+        }
+
+        private void customerFinancial_button_Click(object sender, EventArgs e) // Burası düznelenecek
+        {
+            disableButtons();
+            string gelir =".", gider=".";
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT SUM(Amount) FROM Record WHERE (TransferFrom = @id)";
+            cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    gider = reader[0].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT SUM(Amount) FROM Record WHERE (TransferTo = @id)";
+            cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    gelir = reader[0].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            float balance = 0.0f;
+            // check string null 
+            balance = float.Parse(gelir) - float.Parse(gider);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Gelir", typeof(string));
+            dt.Columns.Add("Gider", typeof(string));
+            dt.Columns.Add("Toplam Bakiye", typeof(string));
+            dt.Rows.Add(gelir, gider, balance.ToString());
+            customerTransaction_dataGridView.DataSource = dt;
+        }
+
+        private void customerTransactions_button_Click(object sender, EventArgs e)
+        {
+            disableButtons();
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT TOP (1000) * FROM Record WHERE (TransferTo = @id OR TransferFrom = @id) ORDER BY RecNum DESC";
+            cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                customerTransaction_dataGridView.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void refreshCustomerDemands()
+        {
+            if (customerList_listBox.SelectedItem.ToString() == null)
+            {
+                MessageBox.Show("Lutfen musteri secimi yapiniz.");
+            }
+            else
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM Demand WHERE CustomerID = @id";
+                cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                try
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    customerTransaction_dataGridView.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void customerRequests_button_Click(object sender, EventArgs e)
+        {
+            enableButtons();
+            refreshCustomerDemands();
+        }
+
+        private void reject_button_Click(object sender, EventArgs e)
+        {
+            if(customerTransaction_dataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seçim yapınız lutfen");
+            }
+            else
+            {
+                foreach (DataGridViewRow row in customerTransaction_dataGridView.SelectedRows)
+                {
+                    cmd = new SqlCommand();
+                    cmd.Connection=con;
+                    cmd.CommandText = "DELETE FROM Demand WHERE demandNumber = @id";
+                    cmd.Parameters.AddWithValue("@id", row.Cells[0].Value);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                MessageBox.Show("Talepler başarıyla reddedilmiştir.");
+            }
+            refreshCustomerDemands();
         }
     }
 }

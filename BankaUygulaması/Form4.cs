@@ -103,71 +103,105 @@ namespace BankaUygulaması
             }
         }
 
+        private bool checkAddCustomerBoxes()
+        {
+            if(String.IsNullOrEmpty(id_textBox.Text) || String.IsNullOrEmpty(name_textBox.Text) || String.IsNullOrEmpty(surname_textBox.Text) || 
+                String.IsNullOrEmpty(address_textBox.Text) || String.IsNullOrEmpty(phone_textBox.Text) || String.IsNullOrEmpty(email_textBox.Text))
+                return false;
+            return true;
+        }
+
         private void newCustomer_button_Click(object sender, EventArgs e)
         {
-            /*int repID = 1;
-            List<repList> tempList = new List<repList>();
-            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT COUNT(repID) as 'Total', repID FROM Customer GROUP BY repID";
-            con.Open();
-            reader = cmd.ExecuteReader();
-            while(reader.Read())
+            if(checkAddCustomerBoxes() == true)
             {
-                repList temp = new repList(reader.GetInt32(0), reader.GetInt32(1));
-                tempList.Add(temp);
+                /*int repID = 1;
+                List<repList> tempList = new List<repList>();
+                con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT COUNT(repID) as 'Total', repID FROM Customer GROUP BY repID";
+                con.Open();
+                reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    repList temp = new repList(reader.GetInt32(0), reader.GetInt32(1));
+                    tempList.Add(temp);
+                }
+                // sort list function
+                // get first element function = string repID;
+                // ad string repID to cmd Parameters
+                reader.Close();
+                con.Close();
+                //
+                con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
+                cmd = new SqlCommand();
+                cmd.Connection=con;
+                cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
+                cmd.Parameters.AddWithValue("@id", id_textBox.Text);
+                cmd.Parameters.AddWithValue("@name", name_textBox.Text);
+                cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
+                cmd.Parameters.AddWithValue("@address", address_textBox.Text);
+                cmd.Parameters.AddWithValue("@email", email_textBox.Text);
+                cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
+                cmd.Parameters.AddWithValue("@repID", repID);
+                con.Open();
+                reader = cmd.ExecuteReader();
+                // execute non query
+                */
+                con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
+                cmd.Parameters.AddWithValue("@id", id_textBox.Text);
+                cmd.Parameters.AddWithValue("@name", name_textBox.Text);
+                cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
+                cmd.Parameters.AddWithValue("@address", address_textBox.Text);
+                cmd.Parameters.AddWithValue("@email", email_textBox.Text);
+                cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
+                cmd.Parameters.AddWithValue("@repID", 201);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ekleme sırasında hata oluştu: " + ex.Message);
+                }
+                //
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "INSERT INTO bank.dbo.Account(ID, CurCode, Balance) Values(@id, 'TUR', 0)";
+                cmd.Parameters.AddWithValue("@id", id_textBox.Text);
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Ekleme işlemi başarıyla tamamlandı.");
+                    id_textBox.Clear();
+                    name_textBox.Clear();
+                    address_textBox.Clear();
+                    email_textBox.Clear();
+                    phone_textBox.Clear();
+                    surname_textBox.Clear();
+                    refreshTheList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("HATA: " + ex.Message);
+                }
             }
-            // sort list function
-            // get first element function = string repID;
-            // ad string repID to cmd Parameters
-            reader.Close();
-            con.Close();
-            //
-            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.Connection=con;
-            cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
-            cmd.Parameters.AddWithValue("@id", id_textBox.Text);
-            cmd.Parameters.AddWithValue("@name", name_textBox.Text);
-            cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
-            cmd.Parameters.AddWithValue("@address", address_textBox.Text);
-            cmd.Parameters.AddWithValue("@email", email_textBox.Text);
-            cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-            cmd.Parameters.AddWithValue("@repID", repID);
-            con.Open();
-            reader = cmd.ExecuteReader();
-            // execute non query
-            */
-            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
-            cmd.Parameters.AddWithValue("@id", id_textBox.Text);
-            cmd.Parameters.AddWithValue("@name", name_textBox.Text);
-            cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
-            cmd.Parameters.AddWithValue("@address", address_textBox.Text);
-            cmd.Parameters.AddWithValue("@email", email_textBox.Text);
-            cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-            cmd.Parameters.AddWithValue("@repID", 201);
-            con.Open();
-            try
+            else
             {
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Ekleme işlemi başarıyla tamamlandı.");
-                id_textBox.Clear();
-                name_textBox.Clear();
-                address_textBox.Clear();
-                email_textBox.Clear();
-                phone_textBox.Clear();
-                surname_textBox.Clear();
-                refreshTheList();
+                MessageBox.Show("Lutfen tum gerekli alanları doldurunuz");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ekleme sırasında hata oluştu: " + ex.Message);
-            }
-            
         }
 
         private void currencyCode_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -180,44 +214,51 @@ namespace BankaUygulaması
         string currencyName_selected;
         private void currency_listBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            currencyName_selected = currency_listBox.SelectedItem.ToString();
-            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.CommandText = "SELECT Value FROM Currency WHERE CurrencyName = @name";
-            cmd.Connection = con;
-            cmd.Parameters.AddWithValue("@name", currencyName_selected);
-            con.Open();
-            reader = cmd.ExecuteReader();
-            if(reader.Read())
+            if(currency_listBox.SelectedItem != null)
             {
-                currencyUpdValue_textBox.Text = reader["Value"].ToString();
+                currencyName_selected = currency_listBox.SelectedItem.ToString();
+                con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
+                cmd = new SqlCommand();
+                cmd.CommandText = "SELECT Value FROM Currency WHERE CurrencyName = @name";
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@name", currencyName_selected);
+                con.Open();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    currencyUpdValue_textBox.Text = reader["Value"].ToString();
+                }
+                reader.Close();
             }
-            reader.Close();
         }
 
         private void addCurrency_button_Click(object sender, EventArgs e) // BURAYI DUZENLE DUZGUN CALSIMIYOR
         {
-            if (String.IsNullOrEmpty(currencyCode_textBox.Text) || String.IsNullOrEmpty(currencyAddValue_textBox.Text) || String.IsNullOrEmpty(currencyAddName_textBox.Text) )
+            if (String.IsNullOrEmpty(currencyCode_textBox.Text) || String.IsNullOrEmpty(currencyAddValue_textBox.Text) || String.IsNullOrEmpty(currencyAddName_textBox.Text) ||
+                currencyCode_textBox.Text.Length != 3)
             {
-                MessageBox.Show("Lutfen tum alanlari doldurunuz.");
+                MessageBox.Show("Lutfen tum alanlari doğru şekilde doldurunuz.");
             }
             else
             {
-                currencyCode_textBox.Text = currencyCode_textBox.Text.ToUpper();
                 cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "INSERT INTO Currency(CurCode,CurrencyName,Value) Values(@curCode, @currencyName, @Value)";
                 cmd.Parameters.AddWithValue("@curCode", currencyCode_textBox.Text);
                 cmd.Parameters.AddWithValue("@Value", currencyAddValue_textBox.Text);
                 cmd.Parameters.AddWithValue("@currencyName", currencyAddName_textBox.Text);
-                reader = cmd.ExecuteReader();
+                if(con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
                 try
                 {
-                    if (reader.Read())
-                    {
-                        MessageBox.Show("Başarıyla eklendi");
-                        refreshTheList();
-                    }
+                    cmd.ExecuteReader();
+                    MessageBox.Show("Başarıyla eklendi");
+                    refreshTheList();
+                    currencyCode_textBox.Clear();
+                    currencyAddName_textBox.Clear();
+                    currencyAddValue_textBox.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -229,18 +270,21 @@ namespace BankaUygulaması
 
         private void update_button_Click(object sender, EventArgs e)
         {
-            
-
+            if(con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            string info = ".";
             if(!String.IsNullOrEmpty(interestRatio_textBox.Text))
             {
                 cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "UPDATE Settings SET ValueFloat = @value WHERE sID = 6";
+                cmd.CommandText = "UPDATE bank.dbo.Settings SET ValueFloat = @value WHERE sID = 6";
                 cmd.Parameters.AddWithValue("@value", interestRatio_textBox.Text);
                 try
                 {
                     cmd.ExecuteNonQuery();
-
+                    info = "Faiz Oranı\n";
                 }
                 catch (Exception ex)
                 {
@@ -248,27 +292,84 @@ namespace BankaUygulaması
                 }
 
             }
-            /*if (!String.IsNullOrEmpty(overdueInterest_textBox.Text))
+            if (!String.IsNullOrEmpty(overdueInterest_textBox.Text))
             {
                 cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "UPDATE Settings SET ValueFloat = @value WHERE sID = 7";
+                cmd.CommandText = "UPDATE bank.dbo.Settings SET ValueFloat = @value WHERE sID = 7";
+                cmd.Parameters.AddWithValue("@value", overdueInterest_textBox.Text);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    info = info + "Kredi Faiz Oranı\n";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             if (!String.IsNullOrEmpty(salary_textBox.Text))
             {
                 cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "UPDATE Settings SET ValueFloat = @value WHERE sID = 5";
+                cmd.CommandText = "UPDATE bank.dbo.Settings SET ValueFloat = @value WHERE sID = 5";
+                cmd.Parameters.AddWithValue("@value", salary_textBox.Text);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    info = info + "Çalışan Maaşı\n";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             if (!String.IsNullOrEmpty(currencyUpdValue_textBox.Text))
             {
-                if(!String.IsNullOrEmpty(currencyName_selected))
+                if(currency_listBox.SelectedItem != null) // burayı duznele
                 {
                     cmd = new SqlCommand();
                     cmd.Connection = con;
-                    cmd.CommandText = "UPDATE Settings SET ValueFloat = @value WHERE sID = 7";
+                    cmd.CommandText = "UPDATE bank.dbo.Currency SET Value = @value  WHERE CurrencyName = @currencyName";
+                    cmd.Parameters.AddWithValue("@value", currencyUpdValue_textBox.Text);
+                    cmd.Parameters.AddWithValue("@currencyName", currency_listBox.SelectedItem.ToString());
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        info = info + currency_listBox.SelectedItem.ToString() + " Kur Oranı\n";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-            }*/
+            }
+            MessageBox.Show("Guncelleme islemleri: \n" + info);
+        }
+
+        private void listAction_button_Click(object sender, EventArgs e)
+        {
+            int number = 1;
+            number = Convert.ToInt32(Math.Round(numericUpDown1.Value, 0));
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT TOP (@last) * FROM Record ORDER BY RecNum DESC";
+            cmd.Parameters.AddWithValue("@last", number);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                allTransaction_dataGridView.DataSource = dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

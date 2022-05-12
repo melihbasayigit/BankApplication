@@ -91,7 +91,7 @@
             this.newCustomer_groupBox.Location = new System.Drawing.Point(348, 12);
             this.newCustomer_groupBox.Name = "newCustomer_groupBox";
             this.newCustomer_groupBox.Size = new System.Drawing.Size(207, 244);
-            this.newCustomer_groupBox.TabIndex = 28;
+            this.newCustomer_groupBox.TabIndex = 3;
             this.newCustomer_groupBox.TabStop = false;
             this.newCustomer_groupBox.Text = "Yeni Müşteri Ekle";
             // 
@@ -100,14 +100,14 @@
             this.surname_textBox.Location = new System.Drawing.Point(70, 72);
             this.surname_textBox.Name = "surname_textBox";
             this.surname_textBox.Size = new System.Drawing.Size(120, 20);
-            this.surname_textBox.TabIndex = 27;
+            this.surname_textBox.TabIndex = 6;
             // 
             // id_textBox
             // 
             this.id_textBox.Location = new System.Drawing.Point(70, 19);
             this.id_textBox.Name = "id_textBox";
             this.id_textBox.Size = new System.Drawing.Size(120, 20);
-            this.id_textBox.TabIndex = 20;
+            this.id_textBox.TabIndex = 4;
             this.id_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.id_textBox_KeyPress);
             // 
             // newCustomer_button
@@ -116,7 +116,7 @@
             this.newCustomer_button.Location = new System.Drawing.Point(16, 205);
             this.newCustomer_button.Name = "newCustomer_button";
             this.newCustomer_button.Size = new System.Drawing.Size(174, 31);
-            this.newCustomer_button.TabIndex = 26;
+            this.newCustomer_button.TabIndex = 10;
             this.newCustomer_button.Text = "Yeni Müşteri Ekle";
             this.newCustomer_button.UseVisualStyleBackColor = true;
             this.newCustomer_button.Click += new System.EventHandler(this.newCustomer_button_Click);
@@ -135,7 +135,7 @@
             this.address_textBox.Location = new System.Drawing.Point(70, 98);
             this.address_textBox.Name = "address_textBox";
             this.address_textBox.Size = new System.Drawing.Size(120, 49);
-            this.address_textBox.TabIndex = 25;
+            this.address_textBox.TabIndex = 7;
             this.address_textBox.Text = "";
             // 
             // name_textBox
@@ -143,21 +143,21 @@
             this.name_textBox.Location = new System.Drawing.Point(70, 46);
             this.name_textBox.Name = "name_textBox";
             this.name_textBox.Size = new System.Drawing.Size(120, 20);
-            this.name_textBox.TabIndex = 22;
+            this.name_textBox.TabIndex = 5;
             // 
             // phone_textBox
             // 
             this.phone_textBox.Location = new System.Drawing.Point(70, 179);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(120, 20);
-            this.phone_textBox.TabIndex = 24;
+            this.phone_textBox.TabIndex = 9;
             // 
             // email_textBox
             // 
             this.email_textBox.Location = new System.Drawing.Point(70, 153);
             this.email_textBox.Name = "email_textBox";
             this.email_textBox.Size = new System.Drawing.Size(120, 20);
-            this.email_textBox.TabIndex = 23;
+            this.email_textBox.TabIndex = 8;
             // 
             // refresh_button
             // 
@@ -165,7 +165,7 @@
             this.refresh_button.Location = new System.Drawing.Point(12, 598);
             this.refresh_button.Name = "refresh_button";
             this.refresh_button.Size = new System.Drawing.Size(282, 31);
-            this.refresh_button.TabIndex = 27;
+            this.refresh_button.TabIndex = 1;
             this.refresh_button.Text = "Refresh";
             this.refresh_button.UseVisualStyleBackColor = true;
             this.refresh_button.Click += new System.EventHandler(this.refresh_button_Click);
@@ -175,8 +175,9 @@
             this.allTransaction_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.allTransaction_dataGridView.Location = new System.Drawing.Point(348, 275);
             this.allTransaction_dataGridView.Name = "allTransaction_dataGridView";
+            this.allTransaction_dataGridView.ReadOnly = true;
             this.allTransaction_dataGridView.Size = new System.Drawing.Size(787, 391);
-            this.allTransaction_dataGridView.TabIndex = 29;
+            this.allTransaction_dataGridView.TabIndex = 25;
             // 
             // bankSettings_groupBox
             // 
@@ -202,7 +203,7 @@
             this.bankSettings_groupBox.Location = new System.Drawing.Point(576, 12);
             this.bankSettings_groupBox.Name = "bankSettings_groupBox";
             this.bankSettings_groupBox.Size = new System.Drawing.Size(559, 244);
-            this.bankSettings_groupBox.TabIndex = 30;
+            this.bankSettings_groupBox.TabIndex = 11;
             this.bankSettings_groupBox.TabStop = false;
             this.bankSettings_groupBox.Text = "Banka Ayarları";
             // 
@@ -212,7 +213,7 @@
             this.addCurrency_button.Location = new System.Drawing.Point(278, 199);
             this.addCurrency_button.Name = "addCurrency_button";
             this.addCurrency_button.Size = new System.Drawing.Size(133, 31);
-            this.addCurrency_button.TabIndex = 39;
+            this.addCurrency_button.TabIndex = 23;
             this.addCurrency_button.Text = "Para Birimi Ekle";
             this.addCurrency_button.UseVisualStyleBackColor = true;
             this.addCurrency_button.Click += new System.EventHandler(this.addCurrency_button_Click);
@@ -223,7 +224,7 @@
             this.deadlock_button.Location = new System.Drawing.Point(420, 199);
             this.deadlock_button.Name = "deadlock_button";
             this.deadlock_button.Size = new System.Drawing.Size(133, 31);
-            this.deadlock_button.TabIndex = 32;
+            this.deadlock_button.TabIndex = 24;
             this.deadlock_button.Text = "Deadlock Analizi";
             this.deadlock_button.UseVisualStyleBackColor = true;
             // 
@@ -232,14 +233,14 @@
             this.currencyAddValue_textBox.Location = new System.Drawing.Point(371, 173);
             this.currencyAddValue_textBox.Name = "currencyAddValue_textBox";
             this.currencyAddValue_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyAddValue_textBox.TabIndex = 38;
+            this.currencyAddValue_textBox.TabIndex = 22;
             // 
             // currencyAddName_textBox
             // 
             this.currencyAddName_textBox.Location = new System.Drawing.Point(371, 147);
             this.currencyAddName_textBox.Name = "currencyAddName_textBox";
             this.currencyAddName_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyAddName_textBox.TabIndex = 37;
+            this.currencyAddName_textBox.TabIndex = 21;
             // 
             // label5
             // 
@@ -253,11 +254,12 @@
             // 
             // currencyCode_textBox
             // 
+            this.currencyCode_textBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.currencyCode_textBox.Location = new System.Drawing.Point(371, 121);
             this.currencyCode_textBox.MaxLength = 3;
             this.currencyCode_textBox.Name = "currencyCode_textBox";
             this.currencyCode_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyCode_textBox.TabIndex = 35;
+            this.currencyCode_textBox.TabIndex = 20;
             this.currencyCode_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.currencyCode_textBox_KeyPress);
             // 
             // listAction_button
@@ -266,15 +268,16 @@
             this.listAction_button.Location = new System.Drawing.Point(123, 195);
             this.listAction_button.Name = "listAction_button";
             this.listAction_button.Size = new System.Drawing.Size(120, 31);
-            this.listAction_button.TabIndex = 34;
+            this.listAction_button.TabIndex = 19;
             this.listAction_button.Text = "Listele";
             this.listAction_button.UseVisualStyleBackColor = true;
+            this.listAction_button.Click += new System.EventHandler(this.listAction_button_Click);
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(123, 168);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            500,
+            1000,
             0,
             0,
             0});
@@ -285,7 +288,7 @@
             0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 33;
+            this.numericUpDown1.TabIndex = 18;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -298,7 +301,7 @@
             this.currency_listBox.Location = new System.Drawing.Point(18, 131);
             this.currency_listBox.Name = "currency_listBox";
             this.currency_listBox.Size = new System.Drawing.Size(99, 95);
-            this.currency_listBox.TabIndex = 32;
+            this.currency_listBox.TabIndex = 16;
             this.currency_listBox.SelectedValueChanged += new System.EventHandler(this.currency_listBox_SelectedValueChanged);
             // 
             // currencyUpdValue_textBox
@@ -306,14 +309,14 @@
             this.currencyUpdValue_textBox.Location = new System.Drawing.Point(123, 105);
             this.currencyUpdValue_textBox.Name = "currencyUpdValue_textBox";
             this.currencyUpdValue_textBox.Size = new System.Drawing.Size(120, 20);
-            this.currencyUpdValue_textBox.TabIndex = 31;
+            this.currencyUpdValue_textBox.TabIndex = 15;
             // 
             // salary_textBox
             // 
             this.salary_textBox.Location = new System.Drawing.Point(123, 79);
             this.salary_textBox.Name = "salary_textBox";
             this.salary_textBox.Size = new System.Drawing.Size(120, 20);
-            this.salary_textBox.TabIndex = 30;
+            this.salary_textBox.TabIndex = 14;
             // 
             // label4
             // 
@@ -330,14 +333,14 @@
             this.interestRatio_textBox.Location = new System.Drawing.Point(123, 26);
             this.interestRatio_textBox.Name = "interestRatio_textBox";
             this.interestRatio_textBox.Size = new System.Drawing.Size(120, 20);
-            this.interestRatio_textBox.TabIndex = 27;
+            this.interestRatio_textBox.TabIndex = 12;
             // 
             // overdueInterest_textBox
             // 
             this.overdueInterest_textBox.Location = new System.Drawing.Point(123, 53);
             this.overdueInterest_textBox.Name = "overdueInterest_textBox";
             this.overdueInterest_textBox.Size = new System.Drawing.Size(120, 20);
-            this.overdueInterest_textBox.TabIndex = 28;
+            this.overdueInterest_textBox.TabIndex = 13;
             // 
             // update_button
             // 
@@ -345,7 +348,7 @@
             this.update_button.Location = new System.Drawing.Point(123, 131);
             this.update_button.Name = "update_button";
             this.update_button.Size = new System.Drawing.Size(120, 31);
-            this.update_button.TabIndex = 27;
+            this.update_button.TabIndex = 17;
             this.update_button.Text = "Güncelle";
             this.update_button.UseVisualStyleBackColor = true;
             this.update_button.Click += new System.EventHandler(this.update_button_Click);
@@ -402,7 +405,7 @@
             this.nextMonth_button.Location = new System.Drawing.Point(12, 635);
             this.nextMonth_button.Name = "nextMonth_button";
             this.nextMonth_button.Size = new System.Drawing.Size(282, 31);
-            this.nextMonth_button.TabIndex = 31;
+            this.nextMonth_button.TabIndex = 2;
             this.nextMonth_button.Text = "Sistemi Bir Ay İleri Al";
             this.nextMonth_button.UseVisualStyleBackColor = true;
             // 

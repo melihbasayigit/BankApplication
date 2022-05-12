@@ -46,17 +46,18 @@
             this.personelInformation_groupBox = new System.Windows.Forms.GroupBox();
             this.login_groupBox = new System.Windows.Forms.GroupBox();
             this.transfer_groupBox = new System.Windows.Forms.GroupBox();
+            this.balance_label = new System.Windows.Forms.Label();
             this.transferMoney_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.transferMoney_textBox = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.draw_button = new System.Windows.Forms.Button();
+            this.deposit_button = new System.Windows.Forms.Button();
             this.myAccounts_groupBox = new System.Windows.Forms.GroupBox();
             this.deleteAcc_button = new System.Windows.Forms.Button();
             this.createAcc_button = new System.Windows.Forms.Button();
             this.credit_groupBox = new System.Windows.Forms.GroupBox();
             this.pay_button = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.takeLoan_button = new System.Windows.Forms.Button();
             this.credit_label = new System.Windows.Forms.Label();
             this.credit_textBox = new System.Windows.Forms.TextBox();
             this.monthly_button = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@
             this.login_button.Margin = new System.Windows.Forms.Padding(2);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(176, 55);
-            this.login_button.TabIndex = 0;
+            this.login_button.TabIndex = 2;
             this.login_button.Text = "GİRİŞ";
             this.login_button.UseVisualStyleBackColor = true;
             this.login_button.Click += new System.EventHandler(this.login_button_Click);
@@ -88,6 +89,7 @@
             this.customerID_textBox.Name = "customerID_textBox";
             this.customerID_textBox.Size = new System.Drawing.Size(150, 20);
             this.customerID_textBox.TabIndex = 1;
+            this.customerID_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customerID_textBox_KeyPress);
             // 
             // label1
             // 
@@ -109,18 +111,18 @@
             this.createAcc_listBox.Margin = new System.Windows.Forms.Padding(2);
             this.createAcc_listBox.Name = "createAcc_listBox";
             this.createAcc_listBox.Size = new System.Drawing.Size(185, 72);
-            this.createAcc_listBox.TabIndex = 6;
+            this.createAcc_listBox.TabIndex = 7;
             // 
             // Acc_listbox
             // 
             this.Acc_listbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.Acc_listbox.FormattingEnabled = true;
             this.Acc_listbox.ItemHeight = 17;
-            this.Acc_listbox.Location = new System.Drawing.Point(9, 118);
+            this.Acc_listbox.Location = new System.Drawing.Point(9, 147);
             this.Acc_listbox.Margin = new System.Windows.Forms.Padding(2);
             this.Acc_listbox.Name = "Acc_listbox";
             this.Acc_listbox.Size = new System.Drawing.Size(197, 106);
-            this.Acc_listbox.TabIndex = 9;
+            this.Acc_listbox.TabIndex = 14;
             this.Acc_listbox.SelectedValueChanged += new System.EventHandler(this.Acc_listbox_SelectedValueChanged);
             // 
             // loginStatus_label
@@ -144,12 +146,12 @@
             this.deleteAcc_listBox.Margin = new System.Windows.Forms.Padding(2);
             this.deleteAcc_listBox.Name = "deleteAcc_listBox";
             this.deleteAcc_listBox.Size = new System.Drawing.Size(185, 72);
-            this.deleteAcc_listBox.TabIndex = 12;
+            this.deleteAcc_listBox.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 232);
+            this.label2.Location = new System.Drawing.Point(6, 261);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
@@ -158,11 +160,12 @@
             // 
             // accNumber_textBox
             // 
-            this.accNumber_textBox.Location = new System.Drawing.Point(95, 228);
+            this.accNumber_textBox.Location = new System.Drawing.Point(95, 257);
             this.accNumber_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.accNumber_textBox.Name = "accNumber_textBox";
             this.accNumber_textBox.Size = new System.Drawing.Size(111, 20);
             this.accNumber_textBox.TabIndex = 15;
+            this.accNumber_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customerID_textBox_KeyPress);
             // 
             // interestRatio_label
             // 
@@ -189,21 +192,21 @@
             this.email_textBox.Location = new System.Drawing.Point(70, 81);
             this.email_textBox.Name = "email_textBox";
             this.email_textBox.Size = new System.Drawing.Size(120, 20);
-            this.email_textBox.TabIndex = 23;
+            this.email_textBox.TabIndex = 4;
             // 
             // phone_textBox
             // 
             this.phone_textBox.Location = new System.Drawing.Point(70, 107);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(120, 20);
-            this.phone_textBox.TabIndex = 24;
+            this.phone_textBox.TabIndex = 5;
             // 
             // address_textBox
             // 
             this.address_textBox.Location = new System.Drawing.Point(70, 26);
             this.address_textBox.Name = "address_textBox";
             this.address_textBox.Size = new System.Drawing.Size(120, 49);
-            this.address_textBox.TabIndex = 25;
+            this.address_textBox.TabIndex = 3;
             this.address_textBox.Text = "";
             // 
             // updateMyInfo_button
@@ -212,9 +215,10 @@
             this.updateMyInfo_button.Location = new System.Drawing.Point(16, 133);
             this.updateMyInfo_button.Name = "updateMyInfo_button";
             this.updateMyInfo_button.Size = new System.Drawing.Size(174, 31);
-            this.updateMyInfo_button.TabIndex = 26;
+            this.updateMyInfo_button.TabIndex = 6;
             this.updateMyInfo_button.Text = "Bilgilerimi Güncelle";
             this.updateMyInfo_button.UseVisualStyleBackColor = true;
+            this.updateMyInfo_button.Click += new System.EventHandler(this.updateMyInfo_button_Click);
             // 
             // personelInformation_groupBox
             // 
@@ -245,11 +249,12 @@
             // 
             // transfer_groupBox
             // 
+            this.transfer_groupBox.Controls.Add(this.balance_label);
             this.transfer_groupBox.Controls.Add(this.transferMoney_button);
             this.transfer_groupBox.Controls.Add(this.label4);
             this.transfer_groupBox.Controls.Add(this.transferMoney_textBox);
-            this.transfer_groupBox.Controls.Add(this.button6);
-            this.transfer_groupBox.Controls.Add(this.button5);
+            this.transfer_groupBox.Controls.Add(this.draw_button);
+            this.transfer_groupBox.Controls.Add(this.deposit_button);
             this.transfer_groupBox.Controls.Add(this.Acc_listbox);
             this.transfer_groupBox.Controls.Add(this.label2);
             this.transfer_groupBox.Controls.Add(this.accNumber_textBox);
@@ -260,20 +265,30 @@
             this.transfer_groupBox.TabStop = false;
             this.transfer_groupBox.Text = "Transfer İşlemlerim";
             // 
+            // balance_label
+            // 
+            this.balance_label.AutoSize = true;
+            this.balance_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.balance_label.Location = new System.Drawing.Point(6, 23);
+            this.balance_label.Name = "balance_label";
+            this.balance_label.Size = new System.Drawing.Size(68, 18);
+            this.balance_label.TabIndex = 38;
+            this.balance_label.Text = "Bakiye: ";
+            // 
             // transferMoney_button
             // 
             this.transferMoney_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.transferMoney_button.Location = new System.Drawing.Point(9, 253);
+            this.transferMoney_button.Location = new System.Drawing.Point(9, 282);
             this.transferMoney_button.Name = "transferMoney_button";
             this.transferMoney_button.Size = new System.Drawing.Size(197, 31);
-            this.transferMoney_button.TabIndex = 37;
+            this.transferMoney_button.TabIndex = 16;
             this.transferMoney_button.Text = "Para Gönder";
             this.transferMoney_button.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 23);
+            this.label4.Location = new System.Drawing.Point(6, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 35;
@@ -281,31 +296,33 @@
             // 
             // transferMoney_textBox
             // 
-            this.transferMoney_textBox.Location = new System.Drawing.Point(59, 20);
+            this.transferMoney_textBox.Location = new System.Drawing.Point(59, 49);
             this.transferMoney_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.transferMoney_textBox.Name = "transferMoney_textBox";
             this.transferMoney_textBox.Size = new System.Drawing.Size(147, 20);
-            this.transferMoney_textBox.TabIndex = 34;
+            this.transferMoney_textBox.TabIndex = 11;
             // 
-            // button6
+            // draw_button
             // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button6.Location = new System.Drawing.Point(9, 82);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(197, 31);
-            this.button6.TabIndex = 36;
-            this.button6.Text = "Para Çek";
-            this.button6.UseVisualStyleBackColor = true;
+            this.draw_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.draw_button.Location = new System.Drawing.Point(9, 111);
+            this.draw_button.Name = "draw_button";
+            this.draw_button.Size = new System.Drawing.Size(197, 31);
+            this.draw_button.TabIndex = 13;
+            this.draw_button.Text = "Para Çek";
+            this.draw_button.UseVisualStyleBackColor = true;
+            this.draw_button.Click += new System.EventHandler(this.draw_button_Click);
             // 
-            // button5
+            // deposit_button
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button5.Location = new System.Drawing.Point(9, 45);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(197, 31);
-            this.button5.TabIndex = 33;
-            this.button5.Text = "Para Yatır";
-            this.button5.UseVisualStyleBackColor = true;
+            this.deposit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deposit_button.Location = new System.Drawing.Point(9, 74);
+            this.deposit_button.Name = "deposit_button";
+            this.deposit_button.Size = new System.Drawing.Size(197, 31);
+            this.deposit_button.TabIndex = 12;
+            this.deposit_button.Text = "Para Yatır";
+            this.deposit_button.UseVisualStyleBackColor = true;
+            this.deposit_button.Click += new System.EventHandler(this.deposit_button_Click);
             // 
             // myAccounts_groupBox
             // 
@@ -326,9 +343,10 @@
             this.deleteAcc_button.Location = new System.Drawing.Point(5, 208);
             this.deleteAcc_button.Name = "deleteAcc_button";
             this.deleteAcc_button.Size = new System.Drawing.Size(185, 31);
-            this.deleteAcc_button.TabIndex = 28;
+            this.deleteAcc_button.TabIndex = 10;
             this.deleteAcc_button.Text = "Hesap Silme Talebi";
             this.deleteAcc_button.UseVisualStyleBackColor = true;
+            this.deleteAcc_button.Click += new System.EventHandler(this.deleteAcc_button_Click);
             // 
             // createAcc_button
             // 
@@ -336,14 +354,15 @@
             this.createAcc_button.Location = new System.Drawing.Point(5, 95);
             this.createAcc_button.Name = "createAcc_button";
             this.createAcc_button.Size = new System.Drawing.Size(185, 31);
-            this.createAcc_button.TabIndex = 27;
+            this.createAcc_button.TabIndex = 8;
             this.createAcc_button.Text = "Hesap Açma Talebi";
             this.createAcc_button.UseVisualStyleBackColor = true;
+            this.createAcc_button.Click += new System.EventHandler(this.createAcc_button_Click);
             // 
             // credit_groupBox
             // 
             this.credit_groupBox.Controls.Add(this.pay_button);
-            this.credit_groupBox.Controls.Add(this.button3);
+            this.credit_groupBox.Controls.Add(this.takeLoan_button);
             this.credit_groupBox.Controls.Add(this.credit_label);
             this.credit_groupBox.Controls.Add(this.credit_textBox);
             this.credit_groupBox.Controls.Add(this.interestRatio_label);
@@ -360,19 +379,20 @@
             this.pay_button.Location = new System.Drawing.Point(14, 85);
             this.pay_button.Name = "pay_button";
             this.pay_button.Size = new System.Drawing.Size(193, 31);
-            this.pay_button.TabIndex = 29;
+            this.pay_button.TabIndex = 19;
             this.pay_button.Text = "Kredi Borcu Öde";
             this.pay_button.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // takeLoan_button
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(82, 48);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(125, 31);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Kredi Çek";
-            this.button3.UseVisualStyleBackColor = true;
+            this.takeLoan_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.takeLoan_button.Location = new System.Drawing.Point(82, 48);
+            this.takeLoan_button.Name = "takeLoan_button";
+            this.takeLoan_button.Size = new System.Drawing.Size(125, 31);
+            this.takeLoan_button.TabIndex = 18;
+            this.takeLoan_button.Text = "Kredi Çek";
+            this.takeLoan_button.UseVisualStyleBackColor = true;
+            this.takeLoan_button.Click += new System.EventHandler(this.takeLoan_button_Click);
             // 
             // credit_label
             // 
@@ -389,7 +409,7 @@
             this.credit_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.credit_textBox.Name = "credit_textBox";
             this.credit_textBox.Size = new System.Drawing.Size(125, 20);
-            this.credit_textBox.TabIndex = 31;
+            this.credit_textBox.TabIndex = 17;
             // 
             // monthly_button
             // 
@@ -397,15 +417,18 @@
             this.monthly_button.Location = new System.Drawing.Point(241, 560);
             this.monthly_button.Name = "monthly_button";
             this.monthly_button.Size = new System.Drawing.Size(225, 31);
-            this.monthly_button.TabIndex = 33;
+            this.monthly_button.TabIndex = 20;
             this.monthly_button.Text = "Aylık Özet";
             this.monthly_button.UseVisualStyleBackColor = true;
+            this.monthly_button.Click += new System.EventHandler(this.monthly_button_Click);
             // 
             // customer_dataGridView
             // 
             this.customer_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customer_dataGridView.Location = new System.Drawing.Point(472, 12);
             this.customer_dataGridView.Name = "customer_dataGridView";
+            this.customer_dataGridView.ReadOnly = true;
+            this.customer_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customer_dataGridView.Size = new System.Drawing.Size(590, 579);
             this.customer_dataGridView.TabIndex = 34;
             // 
@@ -462,17 +485,18 @@
         private System.Windows.Forms.Button transferMoney_button;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox transferMoney_textBox;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button draw_button;
+        private System.Windows.Forms.Button deposit_button;
         private System.Windows.Forms.GroupBox myAccounts_groupBox;
         private System.Windows.Forms.Button deleteAcc_button;
         private System.Windows.Forms.Button createAcc_button;
         private System.Windows.Forms.GroupBox credit_groupBox;
         private System.Windows.Forms.Button pay_button;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button takeLoan_button;
         private System.Windows.Forms.Label credit_label;
         private System.Windows.Forms.TextBox credit_textBox;
         private System.Windows.Forms.Button monthly_button;
         private System.Windows.Forms.DataGridView customer_dataGridView;
+        private System.Windows.Forms.Label balance_label;
     }
 }
