@@ -327,6 +327,7 @@
             // 
             this.customerTransaction_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.customerTransaction_dataGridView.Location = new System.Drawing.Point(531, 24);
+            this.customerTransaction_dataGridView.MultiSelect = false;
             this.customerTransaction_dataGridView.Name = "customerTransaction_dataGridView";
             this.customerTransaction_dataGridView.ReadOnly = true;
             this.customerTransaction_dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -343,6 +344,7 @@
             this.approve_button.TabIndex = 18;
             this.approve_button.Text = "ONAYLA";
             this.approve_button.UseVisualStyleBackColor = true;
+            this.approve_button.Click += new System.EventHandler(this.approve_button_Click);
             // 
             // reject_button
             // 

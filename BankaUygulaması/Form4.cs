@@ -20,17 +20,7 @@ namespace BankaUygulaması
         {
             InitializeComponent();
             con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT Name, Surname FROM Customer";
             con.Open();
-            reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                customer_listBox.Items.Add(reader["Name"] + " " + reader["Surname"]);
-            }
-            reader.Close();
-            con.Close();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -45,23 +35,13 @@ namespace BankaUygulaması
 
         private void refreshTheList()
         {
-            customer_listBox.Items.Clear();
-            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT Name, Surname FROM Customer";
-            con.Open();
-            reader = cmd.ExecuteReader();
             currency_listBox.Items.Clear();
-            while (reader.Read())
-            {
-                customer_listBox.Items.Add(reader["Name"] + " " + reader["Surname"]);
-            }
-            reader.Close();
+            con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
             cmd = new SqlCommand();
             cmd.Connection=con;
             cmd.CommandText = "SELECT ValueFloat FROM Settings WHERE sID>4 AND sID<8";
             List<string> settingValues = new List<string>(3);
+            con.Open();
             reader = cmd.ExecuteReader();
             while(reader.Read())
             {
@@ -80,19 +60,12 @@ namespace BankaUygulaması
             {
                 currency_listBox.Items.Add(reader["CurrencyName"]);
             }
-            con.Close();
-            
-
+            reader.Close();
         }
 
         private void refresh_button_Click(object sender, EventArgs e)
         {
             refreshTheList();
-        }
-
-        private void customer_listBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void id_textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,11 +84,11 @@ namespace BankaUygulaması
             return true;
         }
 
-        private void newCustomer_button_Click(object sender, EventArgs e)
+        private void newCustomer_button_Click(object sender, EventArgs e) // Düzenle
         {
             if(checkAddCustomerBoxes() == true)
             {
-                /*int repID = 1;
+                int retunrRepID = 201;
                 List<repList> tempList = new List<repList>();
                 con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
                 cmd = new SqlCommand();
@@ -125,41 +98,42 @@ namespace BankaUygulaması
                 reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    repList temp = new repList(reader.GetInt32(0), reader.GetInt32(1));
+                    repList temp = new repList(Int32.Parse(reader[0].ToString()), Int32.Parse(reader[1].ToString()));
                     tempList.Add(temp);
                 }
                 // sort list function
-                // get first element function = string repID;
+                // get first element function = int repID;
                 // ad string repID to cmd Parameters
                 reader.Close();
-                con.Close();
+                for (int i = 0; i < tempList.Count; i++)
+                {
+                    for (int j = 1; j < tempList.Count; j++)
+                    {
+                        if(tempList[i].repCount > tempList[j].repCount)
+                        {
+                            repList temp = new repList(tempList[i].repCount, tempList[i].repID);
+                            tempList[i].repCount = tempList[j].repCount;
+                            tempList[i].repID = tempList[j].repID;
+                            tempList[j].repID = temp.repID;
+                            tempList[j].repCount = temp.repCount;
+                        }
+                    }
+                }
+                retunrRepID = tempList[0].returnRepID();
                 //
-                con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
-                cmd = new SqlCommand();
-                cmd.Connection=con;
-                cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
-                cmd.Parameters.AddWithValue("@id", id_textBox.Text);
-                cmd.Parameters.AddWithValue("@name", name_textBox.Text);
-                cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
-                cmd.Parameters.AddWithValue("@address", address_textBox.Text);
-                cmd.Parameters.AddWithValue("@email", email_textBox.Text);
-                cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-                cmd.Parameters.AddWithValue("@repID", repID);
-                con.Open();
-                reader = cmd.ExecuteReader();
+                
                 // execute non query
-                */
                 con = new SqlConnection("server=.;Initial Catalog=bank;Integrated Security=SSPI");
                 cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID) Values(@id, @name, @surname, @address, @email, @phone, @repID)";
+                cmd.CommandText = "INSERT INTO Customer(ID,Name,Surname,Address,Email,Phone,repID, loan) Values(@id, @name, @surname, @address, @email, @phone, @repID, 0)";
                 cmd.Parameters.AddWithValue("@id", id_textBox.Text);
                 cmd.Parameters.AddWithValue("@name", name_textBox.Text);
                 cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
                 cmd.Parameters.AddWithValue("@address", address_textBox.Text);
                 cmd.Parameters.AddWithValue("@email", email_textBox.Text);
                 cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-                cmd.Parameters.AddWithValue("@repID", 201);
+                cmd.Parameters.AddWithValue("@repID", retunrRepID.ToString());
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
@@ -370,6 +344,107 @@ namespace BankaUygulaması
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void deadlock_button_Click(object sender, EventArgs e)
+        {
+            int number = 1;
+            number = Convert.ToInt32(Math.Round(numericUpDown1.Value, 0));
+            listAction_button_Click(sender, new EventArgs());
+            cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "SELECT TOP (@last) * FROM Record ORDER BY RecNum DESC";
+            cmd.Parameters.AddWithValue("@last", number);
+            List<deadlockItem> deadlockList = new List<deadlockItem>();
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int recNum = Int32.Parse(reader["RecNum"].ToString());
+                    int to;
+                    int from;
+                    if (!reader.IsDBNull(1))
+                    {
+                        from = Int32.Parse(reader["TransferFrom"].ToString());
+                    }
+                    else
+                    {
+                        from = 0; // 0 is the bank or NULL value.
+                    }
+                    if (!reader.IsDBNull(2))
+                    {
+                        to = Int32.Parse(reader["TransferTo"].ToString());
+                    }
+                    else
+                    {
+                        to = 0; // 0 is the bank or NULL value.
+                    }
+                    string type = reader["RecType"].ToString();
+                    deadlockItem tempDeadlock = new deadlockItem(recNum, from, to, type);
+                    deadlockList.Add(tempDeadlock);
+                }
+                reader.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            List<String> deadlockOutput = new List<string>();
+            for (int i = 0; i < deadlockList.Count; i++)
+            {
+                if (deadlockList[i].type != "Para Gönderme")
+                {
+                    deadlockList.RemoveAt(i);
+                    i--;
+                }
+            }
+            List<deadlockItem> deadlockList2 = new List<deadlockItem>();
+            for (int i = deadlockList.Count -1; i >= 0 ; i--)
+            {
+                deadlockList2.Add(deadlockList[i]);   
+            }
+            deadlockList = deadlockList2;
+
+            // Deadlock Analzye
+
+            while (deadlockList.Count > 0)
+            {
+                List<int> numbers = new List<int>();
+                int target = deadlockList[0].to;
+                numbers.Add(deadlockList[0].recNum);
+                for (int i = 1; i < deadlockList.Count; i++)
+                {
+                    if (deadlockList[i].to == target || deadlockList[i].from == target)
+                    {
+                        int index = i - 1;
+                        numbers.Add(deadlockList[i].recNum);
+                        deadlockList.RemoveAt(i);
+                        i = index;
+                    }
+                }
+                deadlockList.RemoveAt(0);
+                if(numbers.Count >= 2)
+                {
+                    string tempStr = "(" + numbers[0];
+                    for (int i = 1; i < numbers.Count; i++)
+                    {
+                        tempStr += "-" + numbers[i];
+                    }
+                    tempStr += ")";
+                    deadlockOutput.Add(tempStr);
+                }
+            }
+            MessageBox.Show("Number of Deadlock: " + deadlockOutput.Count.ToString());
+            for (int i = 0; i < deadlockOutput.Count; i++)
+            {
+                MessageBox.Show(deadlockOutput[i]);
+            }
+
         }
     }
 }

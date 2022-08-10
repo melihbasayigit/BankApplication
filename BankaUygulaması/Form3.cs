@@ -107,24 +107,27 @@ namespace BankaUygulaması
 
         private void customerList_listBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            SqlCommand lscmd = new SqlCommand();
-            SqlDataReader reader;
-            lscmd.Connection = con;
-            lscmd.CommandText = "SELECT * FROM Customer WHERE ID = @cusID";
-            lscmd.Parameters.Add("@cusID",SqlDbType.Int);
-            lscmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
-            lscmd.Prepare();
-            reader = lscmd.ExecuteReader();
-            while (reader.Read()) 
+            if(!String.IsNullOrEmpty(customerList_listBox.SelectedItem.ToString()))
             {
-                customerID_textBox.Text = reader["ID"].ToString();
-                name_textBox.Text = reader["Name"].ToString();
-                surname_textBox.Text = reader["Surname"].ToString();
-                address_textBox.Text = reader["Address"].ToString();
-                email_textBox.Text = reader["Email"].ToString();
-                phone_textBox.Text = reader["Phone"].ToString();
+                SqlCommand lscmd = new SqlCommand();
+                SqlDataReader reader;
+                lscmd.Connection = con;
+                lscmd.CommandText = "SELECT * FROM Customer WHERE ID = @cusID";
+                lscmd.Parameters.Add("@cusID", SqlDbType.Int);
+                lscmd.Parameters["@cusID"].Value = customerList_listBox.SelectedItem.ToString();
+                lscmd.Prepare();
+                reader = lscmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    customerID_textBox.Text = reader["ID"].ToString();
+                    name_textBox.Text = reader["Name"].ToString();
+                    surname_textBox.Text = reader["Surname"].ToString();
+                    address_textBox.Text = reader["Address"].ToString();
+                    email_textBox.Text = reader["Email"].ToString();
+                    phone_textBox.Text = reader["Phone"].ToString();
+                }
+                reader.Close();
             }
-            reader.Close();
         }
 
         private void insertNewCustomer_button_Click(object sender, EventArgs e)
@@ -217,39 +220,41 @@ namespace BankaUygulaması
         }
 
         private void updateInfo_button_Click(object sender, EventArgs e)
-        {
-            if(customerList_listBox.SelectedItem != null)
+        {               
+            if (customerList_listBox.SelectedItem != null)
             {
-                if(String.IsNullOrEmpty(id_textBox.Text) || String.IsNullOrEmpty(name_textBox.Text) || String.IsNullOrEmpty(surname_textBox.Text) || String.IsNullOrEmpty(
-                    address_textBox.Text) || String.IsNullOrEmpty(email_textBox.Text) || String.IsNullOrEmpty(phone_textBox.Text))
+                if (String.IsNullOrEmpty(address_textBox.Text) || String.IsNullOrEmpty(email_textBox.Text) || String.IsNullOrEmpty(phone_textBox.Text) || 
+                    String.IsNullOrEmpty(name_textBox.Text) || String.IsNullOrEmpty(surname_textBox.Text))
                 {
-                    MessageBox.Show("Tüm alanları doldurmanız gereklidir.");
+                    MessageBox.Show("Guncellemek istediğiniz tüm alanları doldurunuz");
                 }
                 else
                 {
                     cmd = new SqlCommand();
-                    cmd.CommandText = "UPDATE Customer SET ID = @newid, Name = @name, Surname = @surname, Address = @address, Email = @email, Phone = @phone" +
-                        " WHERE ID = @id";
                     cmd.Connection = con;
-                    cmd.Parameters.AddWithValue("@newid", id_textBox.Text);
+                    cmd.CommandText = "UPDATE bank.dbo.Customer SET Name = @name, Surname = @surname, Address = @address , Phone = @phone , Email = @email  " +
+                        "WHERE ID = @id";
                     cmd.Parameters.AddWithValue("@name", name_textBox.Text);
                     cmd.Parameters.AddWithValue("@surname", surname_textBox.Text);
                     cmd.Parameters.AddWithValue("@address", address_textBox.Text);
-                    cmd.Parameters.AddWithValue("@email", email_textBox.Text);
                     cmd.Parameters.AddWithValue("@phone", phone_textBox.Text);
-                    cmd.Parameters.Add("@id", SqlDbType.Int);
-                    cmd.Parameters["@id"].Value = Convert.ToInt32(customerList_listBox.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@email", email_textBox.Text);
+                    cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
                     try
                     {
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Kullanıcı güncellendi.");
+                        MessageBox.Show("Bilgileriniz basariyla güncellenmiştir.");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("HATA: " + ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
-                    refreshTheList();
                 }
+                refreshTheList();
+            }
+            else
+            {
+                MessageBox.Show("Müşteri seçimi yapılmadan güncelleme işlemi yapılamaz");
             }
         }
 
@@ -301,6 +306,10 @@ namespace BankaUygulaması
             }
             float balance = 0.0f;
             // check string null 
+            if (String.IsNullOrEmpty(gelir))
+                gelir = "0";
+            if (String.IsNullOrEmpty(gider))
+                gider = "0";
             balance = float.Parse(gelir) - float.Parse(gider);
             DataTable dt = new DataTable();
             dt.Columns.Add("Gelir", typeof(string));
@@ -313,25 +322,50 @@ namespace BankaUygulaması
         private void customerTransactions_button_Click(object sender, EventArgs e)
         {
             disableButtons();
+            ListBox lsbox = new ListBox();
             cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "SELECT TOP (1000) * FROM Record WHERE (TransferTo = @id OR TransferFrom = @id) ORDER BY RecNum DESC";
+            cmd.CommandText = "SELECT AccountNumber FROM Account WHERE ID = @id";
             cmd.Parameters.AddWithValue("@id", customerList_listBox.SelectedItem.ToString());
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            if (con.State == ConnectionState.Closed)
+            dr = cmd.ExecuteReader();
+            while(dr.Read())
             {
-                con.Open();
+                lsbox.Items.Add(dr["AccountNumber"].ToString());
             }
-            try
+            dr.Close();
+            DataTable dt = new DataTable();
+            for (int i = 0; i < lsbox.Items.Count; i++)
             {
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                customerTransaction_dataGridView.DataSource = dt;
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT TOP (1000) * FROM Record WHERE (TransferTo = @id OR TransferFrom = @id) ORDER BY RecNum DESC";
+                DateTime myDateTime = DateTime.Now;
+                string date = myDateTime.ToString("yyyy-MM");
+                cmd.Parameters.AddWithValue("@id", lsbox.Items[i].ToString());
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                try
+                {
+                    if (i == 0)
+                    {
+                        da.Fill(dt);
+                    }
+                    else
+                    {
+                        DataTable tempdt = new DataTable();
+                        da.Fill(tempdt);
+                        dt.Merge(tempdt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            customerTransaction_dataGridView.DataSource = dt;
         }
 
         private void refreshCustomerDemands()
@@ -356,6 +390,7 @@ namespace BankaUygulaması
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     customerTransaction_dataGridView.DataSource = dt;
+                    
                 }
                 catch (Exception ex)
                 {
@@ -370,6 +405,25 @@ namespace BankaUygulaması
             refreshCustomerDemands();
         }
 
+        private void rejectDemand()
+        {
+            foreach (DataGridViewRow row in customerTransaction_dataGridView.SelectedRows)
+            {
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "DELETE FROM Demand WHERE demandNumber = @id";
+                cmd.Parameters.AddWithValue("@id", row.Cells[0].Value);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         private void reject_button_Click(object sender, EventArgs e)
         {
             if(customerTransaction_dataGridView.SelectedRows.Count == 0)
@@ -378,23 +432,64 @@ namespace BankaUygulaması
             }
             else
             {
-                foreach (DataGridViewRow row in customerTransaction_dataGridView.SelectedRows)
-                {
-                    cmd = new SqlCommand();
-                    cmd.Connection=con;
-                    cmd.CommandText = "DELETE FROM Demand WHERE demandNumber = @id";
-                    cmd.Parameters.AddWithValue("@id", row.Cells[0].Value);
-                    try
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
+                rejectDemand();
                 MessageBox.Show("Talepler başarıyla reddedilmiştir.");
             }
+            refreshCustomerDemands();
+        }
+
+        private void approve_button_Click(object sender, EventArgs e)
+        {
+            float loan = 0f;
+            string[] lscell = new string[3];
+            lscell[0] = customerTransaction_dataGridView.SelectedRows[0].Cells[1].Value.ToString();
+            lscell[1] = customerTransaction_dataGridView.SelectedRows[0].Cells[2].Value.ToString();
+            lscell[2] = customerTransaction_dataGridView.SelectedRows[0].Cells[3].Value.ToString();
+            if(lscell[1] == "Kredi Talebi")
+            {
+                float oldLoan = 0f;
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT loan FROM Customer WHERE ID = @id";
+                cmd.Parameters.AddWithValue("@id", lscell[0]);
+                dr = cmd.ExecuteReader();
+                if(dr.Read())
+                {
+                    oldLoan = float.Parse(dr["loan"].ToString());
+                }
+                dr.Close();
+                loan = float.Parse(lscell[2]);
+                //
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT ValueFloat FROM Settings WHERE sID = 6";
+                float interest = 0f;
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+
+                    interest = float.Parse(dr["ValueFloat"].ToString());
+                }
+                dr.Close();
+                //
+                loan += (interest * loan) / 100;
+                loan = loan + oldLoan;
+                //
+                cmd = new SqlCommand();
+                cmd.Connection=con;
+                cmd.CommandText = "UPDATE Customer SET loan = @loan WHERE ID = @id";
+                cmd.Parameters.AddWithValue("@loan", loan);
+                cmd.Parameters.AddWithValue("@id", lscell[0]);
+                cmd.ExecuteNonQuery();
+                //
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                
+            }
+            
+
+            rejectDemand();
+            MessageBox.Show("Talepler başarıyla onaylanmıstır.");
             refreshCustomerDemands();
         }
     }

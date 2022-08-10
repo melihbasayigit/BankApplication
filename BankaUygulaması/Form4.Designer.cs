@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.customer_listBox = new System.Windows.Forms.ListBox();
             this.newCustomer_groupBox = new System.Windows.Forms.GroupBox();
             this.surname_textBox = new System.Windows.Forms.TextBox();
             this.id_textBox = new System.Windows.Forms.TextBox();
@@ -42,13 +41,10 @@
             this.allTransaction_dataGridView = new System.Windows.Forms.DataGridView();
             this.bankSettings_groupBox = new System.Windows.Forms.GroupBox();
             this.addCurrency_button = new System.Windows.Forms.Button();
-            this.deadlock_button = new System.Windows.Forms.Button();
             this.currencyAddValue_textBox = new System.Windows.Forms.TextBox();
             this.currencyAddName_textBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.currencyCode_textBox = new System.Windows.Forms.TextBox();
-            this.listAction_button = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.currency_listBox = new System.Windows.Forms.ListBox();
             this.currencyUpdValue_textBox = new System.Windows.Forms.TextBox();
             this.salary_textBox = new System.Windows.Forms.TextBox();
@@ -56,27 +52,15 @@
             this.interestRatio_textBox = new System.Windows.Forms.TextBox();
             this.overdueInterest_textBox = new System.Windows.Forms.TextBox();
             this.update_button = new System.Windows.Forms.Button();
-            this.bankWallet_label = new System.Windows.Forms.Label();
-            this.bankProfit_label = new System.Windows.Forms.Label();
-            this.bankOutcome_label = new System.Windows.Forms.Label();
-            this.bankIncome_label = new System.Windows.Forms.Label();
+            this.deadlock_button = new System.Windows.Forms.Button();
+            this.listAction_button = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.nextMonth_button = new System.Windows.Forms.Button();
             this.newCustomer_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.allTransaction_dataGridView)).BeginInit();
             this.bankSettings_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // customer_listBox
-            // 
-            this.customer_listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F);
-            this.customer_listBox.FormattingEnabled = true;
-            this.customer_listBox.ItemHeight = 18;
-            this.customer_listBox.Location = new System.Drawing.Point(12, 12);
-            this.customer_listBox.Name = "customer_listBox";
-            this.customer_listBox.Size = new System.Drawing.Size(282, 580);
-            this.customer_listBox.TabIndex = 0;
-            this.customer_listBox.SelectedIndexChanged += new System.EventHandler(this.customer_listBox_SelectedIndexChanged);
             // 
             // newCustomer_groupBox
             // 
@@ -88,7 +72,7 @@
             this.newCustomer_groupBox.Controls.Add(this.name_textBox);
             this.newCustomer_groupBox.Controls.Add(this.phone_textBox);
             this.newCustomer_groupBox.Controls.Add(this.email_textBox);
-            this.newCustomer_groupBox.Location = new System.Drawing.Point(348, 12);
+            this.newCustomer_groupBox.Location = new System.Drawing.Point(252, 12);
             this.newCustomer_groupBox.Name = "newCustomer_groupBox";
             this.newCustomer_groupBox.Size = new System.Drawing.Size(207, 244);
             this.newCustomer_groupBox.TabIndex = 3;
@@ -162,9 +146,9 @@
             // refresh_button
             // 
             this.refresh_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.refresh_button.Location = new System.Drawing.Point(12, 598);
+            this.refresh_button.Location = new System.Drawing.Point(12, 154);
             this.refresh_button.Name = "refresh_button";
-            this.refresh_button.Size = new System.Drawing.Size(282, 31);
+            this.refresh_button.Size = new System.Drawing.Size(210, 31);
             this.refresh_button.TabIndex = 1;
             this.refresh_button.Text = "Refresh";
             this.refresh_button.UseVisualStyleBackColor = true;
@@ -173,22 +157,19 @@
             // allTransaction_dataGridView
             // 
             this.allTransaction_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.allTransaction_dataGridView.Location = new System.Drawing.Point(348, 275);
+            this.allTransaction_dataGridView.Location = new System.Drawing.Point(12, 275);
             this.allTransaction_dataGridView.Name = "allTransaction_dataGridView";
             this.allTransaction_dataGridView.ReadOnly = true;
-            this.allTransaction_dataGridView.Size = new System.Drawing.Size(787, 391);
+            this.allTransaction_dataGridView.Size = new System.Drawing.Size(982, 391);
             this.allTransaction_dataGridView.TabIndex = 25;
             // 
             // bankSettings_groupBox
             // 
             this.bankSettings_groupBox.Controls.Add(this.addCurrency_button);
-            this.bankSettings_groupBox.Controls.Add(this.deadlock_button);
             this.bankSettings_groupBox.Controls.Add(this.currencyAddValue_textBox);
             this.bankSettings_groupBox.Controls.Add(this.currencyAddName_textBox);
             this.bankSettings_groupBox.Controls.Add(this.label5);
             this.bankSettings_groupBox.Controls.Add(this.currencyCode_textBox);
-            this.bankSettings_groupBox.Controls.Add(this.listAction_button);
-            this.bankSettings_groupBox.Controls.Add(this.numericUpDown1);
             this.bankSettings_groupBox.Controls.Add(this.currency_listBox);
             this.bankSettings_groupBox.Controls.Add(this.currencyUpdValue_textBox);
             this.bankSettings_groupBox.Controls.Add(this.salary_textBox);
@@ -196,13 +177,9 @@
             this.bankSettings_groupBox.Controls.Add(this.interestRatio_textBox);
             this.bankSettings_groupBox.Controls.Add(this.overdueInterest_textBox);
             this.bankSettings_groupBox.Controls.Add(this.update_button);
-            this.bankSettings_groupBox.Controls.Add(this.bankWallet_label);
-            this.bankSettings_groupBox.Controls.Add(this.bankProfit_label);
-            this.bankSettings_groupBox.Controls.Add(this.bankOutcome_label);
-            this.bankSettings_groupBox.Controls.Add(this.bankIncome_label);
-            this.bankSettings_groupBox.Location = new System.Drawing.Point(576, 12);
+            this.bankSettings_groupBox.Location = new System.Drawing.Point(480, 12);
             this.bankSettings_groupBox.Name = "bankSettings_groupBox";
-            this.bankSettings_groupBox.Size = new System.Drawing.Size(559, 244);
+            this.bankSettings_groupBox.Size = new System.Drawing.Size(514, 244);
             this.bankSettings_groupBox.TabIndex = 11;
             this.bankSettings_groupBox.TabStop = false;
             this.bankSettings_groupBox.Text = "Banka Ayarları";
@@ -210,23 +187,13 @@
             // addCurrency_button
             // 
             this.addCurrency_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.addCurrency_button.Location = new System.Drawing.Point(278, 199);
+            this.addCurrency_button.Location = new System.Drawing.Point(278, 207);
             this.addCurrency_button.Name = "addCurrency_button";
-            this.addCurrency_button.Size = new System.Drawing.Size(133, 31);
+            this.addCurrency_button.Size = new System.Drawing.Size(213, 31);
             this.addCurrency_button.TabIndex = 23;
             this.addCurrency_button.Text = "Para Birimi Ekle";
             this.addCurrency_button.UseVisualStyleBackColor = true;
             this.addCurrency_button.Click += new System.EventHandler(this.addCurrency_button_Click);
-            // 
-            // deadlock_button
-            // 
-            this.deadlock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.deadlock_button.Location = new System.Drawing.Point(420, 199);
-            this.deadlock_button.Name = "deadlock_button";
-            this.deadlock_button.Size = new System.Drawing.Size(133, 31);
-            this.deadlock_button.TabIndex = 24;
-            this.deadlock_button.Text = "Deadlock Analizi";
-            this.deadlock_button.UseVisualStyleBackColor = true;
             // 
             // currencyAddValue_textBox
             // 
@@ -262,45 +229,12 @@
             this.currencyCode_textBox.TabIndex = 20;
             this.currencyCode_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.currencyCode_textBox_KeyPress);
             // 
-            // listAction_button
-            // 
-            this.listAction_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.listAction_button.Location = new System.Drawing.Point(123, 195);
-            this.listAction_button.Name = "listAction_button";
-            this.listAction_button.Size = new System.Drawing.Size(120, 31);
-            this.listAction_button.TabIndex = 19;
-            this.listAction_button.Text = "Listele";
-            this.listAction_button.UseVisualStyleBackColor = true;
-            this.listAction_button.Click += new System.EventHandler(this.listAction_button_Click);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(123, 168);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 18;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // currency_listBox
             // 
             this.currency_listBox.FormattingEnabled = true;
             this.currency_listBox.Location = new System.Drawing.Point(18, 131);
             this.currency_listBox.Name = "currency_listBox";
-            this.currency_listBox.Size = new System.Drawing.Size(99, 95);
+            this.currency_listBox.Size = new System.Drawing.Size(225, 69);
             this.currency_listBox.TabIndex = 16;
             this.currency_listBox.SelectedValueChanged += new System.EventHandler(this.currency_listBox_SelectedValueChanged);
             // 
@@ -345,66 +279,64 @@
             // update_button
             // 
             this.update_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.update_button.Location = new System.Drawing.Point(123, 131);
+            this.update_button.Location = new System.Drawing.Point(18, 207);
             this.update_button.Name = "update_button";
-            this.update_button.Size = new System.Drawing.Size(120, 31);
+            this.update_button.Size = new System.Drawing.Size(225, 31);
             this.update_button.TabIndex = 17;
             this.update_button.Text = "Güncelle";
             this.update_button.UseVisualStyleBackColor = true;
             this.update_button.Click += new System.EventHandler(this.update_button_Click);
             // 
-            // bankWallet_label
+            // deadlock_button
             // 
-            this.bankWallet_label.AutoSize = true;
-            this.bankWallet_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankWallet_label.ForeColor = System.Drawing.Color.Blue;
-            this.bankWallet_label.Location = new System.Drawing.Point(274, 88);
-            this.bankWallet_label.Name = "bankWallet_label";
-            this.bankWallet_label.Size = new System.Drawing.Size(202, 20);
-            this.bankWallet_label.TabIndex = 3;
-            this.bankWallet_label.Text = "Toplam: 150.000.000 TL";
-            this.bankWallet_label.Click += new System.EventHandler(this.label3_Click);
+            this.deadlock_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.deadlock_button.Location = new System.Drawing.Point(12, 115);
+            this.deadlock_button.Name = "deadlock_button";
+            this.deadlock_button.Size = new System.Drawing.Size(210, 31);
+            this.deadlock_button.TabIndex = 24;
+            this.deadlock_button.Text = "Deadlock Analizi";
+            this.deadlock_button.UseVisualStyleBackColor = true;
+            this.deadlock_button.Click += new System.EventHandler(this.deadlock_button_Click);
             // 
-            // bankProfit_label
+            // listAction_button
             // 
-            this.bankProfit_label.AutoSize = true;
-            this.bankProfit_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankProfit_label.ForeColor = System.Drawing.Color.Chocolate;
-            this.bankProfit_label.Location = new System.Drawing.Point(274, 63);
-            this.bankProfit_label.Name = "bankProfit_label";
-            this.bankProfit_label.Size = new System.Drawing.Size(161, 20);
-            this.bankProfit_label.TabIndex = 2;
-            this.bankProfit_label.Text = "Kar: 25.000.000 TL";
-            this.bankProfit_label.Click += new System.EventHandler(this.label2_Click);
+            this.listAction_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.listAction_button.Location = new System.Drawing.Point(12, 73);
+            this.listAction_button.Name = "listAction_button";
+            this.listAction_button.Size = new System.Drawing.Size(210, 31);
+            this.listAction_button.TabIndex = 19;
+            this.listAction_button.Text = "Listele";
+            this.listAction_button.UseVisualStyleBackColor = true;
+            this.listAction_button.Click += new System.EventHandler(this.listAction_button_Click);
             // 
-            // bankOutcome_label
+            // numericUpDown1
             // 
-            this.bankOutcome_label.AutoSize = true;
-            this.bankOutcome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankOutcome_label.ForeColor = System.Drawing.Color.Maroon;
-            this.bankOutcome_label.Location = new System.Drawing.Point(274, 38);
-            this.bankOutcome_label.Name = "bankOutcome_label";
-            this.bankOutcome_label.Size = new System.Drawing.Size(184, 20);
-            this.bankOutcome_label.TabIndex = 1;
-            this.bankOutcome_label.Text = "Gider: -15.000.000 TL";
-            // 
-            // bankIncome_label
-            // 
-            this.bankIncome_label.AutoSize = true;
-            this.bankIncome_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bankIncome_label.ForeColor = System.Drawing.Color.DarkGreen;
-            this.bankIncome_label.Location = new System.Drawing.Point(274, 13);
-            this.bankIncome_label.Name = "bankIncome_label";
-            this.bankIncome_label.Size = new System.Drawing.Size(172, 20);
-            this.bankIncome_label.TabIndex = 0;
-            this.bankIncome_label.Text = "Gelir: +30.000.00 TL";
+            this.numericUpDown1.Location = new System.Drawing.Point(90, 47);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(132, 20);
+            this.numericUpDown1.TabIndex = 18;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // nextMonth_button
             // 
             this.nextMonth_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.nextMonth_button.Location = new System.Drawing.Point(12, 635);
+            this.nextMonth_button.Location = new System.Drawing.Point(12, 191);
             this.nextMonth_button.Name = "nextMonth_button";
-            this.nextMonth_button.Size = new System.Drawing.Size(282, 31);
+            this.nextMonth_button.Size = new System.Drawing.Size(210, 31);
             this.nextMonth_button.TabIndex = 2;
             this.nextMonth_button.Text = "Sistemi Bir Ay İleri Al";
             this.nextMonth_button.UseVisualStyleBackColor = true;
@@ -413,13 +345,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1147, 683);
+            this.ClientSize = new System.Drawing.Size(1013, 683);
             this.Controls.Add(this.nextMonth_button);
+            this.Controls.Add(this.deadlock_button);
             this.Controls.Add(this.bankSettings_groupBox);
             this.Controls.Add(this.allTransaction_dataGridView);
             this.Controls.Add(this.refresh_button);
+            this.Controls.Add(this.listAction_button);
             this.Controls.Add(this.newCustomer_groupBox);
-            this.Controls.Add(this.customer_listBox);
+            this.Controls.Add(this.numericUpDown1);
             this.Name = "Form4";
             this.Text = "Form4";
             this.newCustomer_groupBox.ResumeLayout(false);
@@ -433,8 +367,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox customer_listBox;
         private System.Windows.Forms.GroupBox newCustomer_groupBox;
         private System.Windows.Forms.TextBox id_textBox;
         private System.Windows.Forms.Button newCustomer_button;
@@ -446,10 +378,6 @@
         private System.Windows.Forms.Button refresh_button;
         private System.Windows.Forms.DataGridView allTransaction_dataGridView;
         private System.Windows.Forms.GroupBox bankSettings_groupBox;
-        private System.Windows.Forms.Label bankWallet_label;
-        private System.Windows.Forms.Label bankProfit_label;
-        private System.Windows.Forms.Label bankOutcome_label;
-        private System.Windows.Forms.Label bankIncome_label;
         private System.Windows.Forms.Button update_button;
         private System.Windows.Forms.Button nextMonth_button;
         private System.Windows.Forms.Button deadlock_button;

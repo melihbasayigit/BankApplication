@@ -108,11 +108,18 @@ namespace BankaUygulaması
             //cnn.Close();
         }
 
-        private string getAccountNumber()
+        private string splitAccountNumber(string fullString)
         {
             string[] words;
-            words = Acc_listbox.SelectedItem.ToString().Split('_');
+            words = fullString.ToString().Split('_');
             return words[0];
+        }
+
+        private string getAccountNumber()
+        {
+            if (Acc_listbox.SelectedItem == null)
+                return "";
+            return splitAccountNumber(Acc_listbox.SelectedItem.ToString());
         }
 
         private void refreshAccList()
@@ -216,7 +223,7 @@ namespace BankaUygulaması
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@frombalance", (balance + transferMoney));
                 command.Parameters.AddWithValue("@amount", transferMoney);
-                command.Parameters.AddWithValue("@id", customerID_textBox.Text);
+                command.Parameters.AddWithValue("@id", getAccountNumber());
                 if (cnn.State == ConnectionState.Closed)
                 {
                     cnn.Open();
@@ -229,7 +236,6 @@ namespace BankaUygulaması
                 {
                     MessageBox.Show(ex.Message);
                 }
-                refreshAccList();
                 refreshAccList();
             }
             else
@@ -334,7 +340,7 @@ namespace BankaUygulaması
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@tobalance", (balance - transferMoney));
                 command.Parameters.AddWithValue("@amount", transferMoney);
-                command.Parameters.AddWithValue("@id", customerID_textBox.Text);
+                command.Parameters.AddWithValue("@id", getAccountNumber());
                 if (cnn.State == ConnectionState.Closed)
                 {
                     cnn.Open();
@@ -355,32 +361,43 @@ namespace BankaUygulaması
             }
         }
 
-        private void monthly_button_Click(object sender, EventArgs e)
+        private void monthly_button_Click(object sender, EventArgs e) 
         {
-            SqlCommand cmd;
-            cmd = new SqlCommand();
-            cmd.Connection = cnn;
-            cmd.CommandText = "SELECT * FROM Record WHERE (TransferTo = @id OR TransferFrom = @id) AND date >= @date1 AND Date <= @date2";
-            DateTime myDateTime = DateTime.Now;
-            string date = myDateTime.ToString("yyyy-MM");
-            cmd.Parameters.AddWithValue("@id", customerID_textBox.Text);
-            cmd.Parameters.AddWithValue("@date1", date + "-01");
-            cmd.Parameters.AddWithValue("@date2", date + "-31");
-            if (cnn.State == ConnectionState.Closed)
+            DataTable dt = new DataTable();
+            for (int i = 0; i < Acc_listbox.Items.Count; i++)
             {
-                cnn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cnn;
+                cmd.CommandText = "SELECT * FROM Record WHERE (TransferTo = @id OR TransferFrom = @id) AND date >= @date1 AND Date <= @date2";
+                DateTime myDateTime = DateTime.Now;
+                string date = myDateTime.ToString("yyyy-MM");
+                cmd.Parameters.AddWithValue("@id", splitAccountNumber(Acc_listbox.Items[i].ToString()));
+                cmd.Parameters.AddWithValue("@date1", date + "-01");
+                cmd.Parameters.AddWithValue("@date2", date + "-31");
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                try
+                {
+                    if (i == 0)
+                    {
+                        da.Fill(dt);
+                    }
+                    else
+                    {
+                        DataTable tempdt = new DataTable();
+                        da.Fill(tempdt);
+                        dt.Merge(tempdt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            try
-            {
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                customer_dataGridView.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            customer_dataGridView.DataSource = dt;
         }
 
         private void createAcc_button_Click(object sender, EventArgs e)
@@ -470,6 +487,183 @@ namespace BankaUygulaması
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void transferMoney_button_Click(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(accNumber_textBox.Text))
+            {
+                MessageBox.Show("Para göndereceğiniz hesap numarasını giriniz.");
+            }
+            else
+            {
+                //Select balance 1, curcode 1
+                float balance_1 = 0f;
+                float balance_2 = 0f;
+                float value_1 = 0f;
+                float value_2 = 0f;
+                string curcode_1 = "TUR";
+                string curcode_2 = "TUR";
+                SqlCommand cmd = new SqlCommand();
+                SqlDataReader dr;
+                cmd.CommandText = "SELECT Balance, CurCode FROM Account WHERE AccountNumber = @accNumber";
+                cmd.Connection = cnn;
+                splitted = Acc_listbox.SelectedItem.ToString().Split('_');
+                cmd.Parameters.AddWithValue("@accNumber", splitted[0]);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        balance_1 = float.Parse(dr["Balance"].ToString());
+                        curcode_1 = dr["CurCode"].ToString();
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // Balance 2 curcode 2
+                cmd = new SqlCommand();
+                cmd.CommandText = "SELECT Balance, CurCode FROM Account WHERE AccountNumber = @accNumber";
+                cmd.Connection = cnn;
+                cmd.Parameters.AddWithValue("@accNumber", accNumber_textBox.Text);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        balance_2 = float.Parse(dr["Balance"].ToString());
+                        curcode_2 = dr["CurCode"].ToString();
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // balance 1 = new balance 1
+                float transferMoney = 0f;
+                transferMoney = float.Parse(transferMoney_textBox.Text);
+                balance_1 = balance_1 - transferMoney;
+                // value cur code 1
+                cmd = new SqlCommand();
+                cmd.CommandText = "SELECT Value From Currency WHERE CurCode = @curcode";
+                cmd.Connection = cnn;
+                cmd.Parameters.AddWithValue("@curcode", curcode_1);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        value_1 = float.Parse(dr["Value"].ToString());
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // Value curcode 2
+                cmd = new SqlCommand();
+                cmd.CommandText = "SELECT Value From Currency WHERE CurCode = @curcode";
+                cmd.Connection = cnn;
+                cmd.Parameters.AddWithValue("@curcode", curcode_2);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        value_2 = float.Parse(dr["Value"].ToString());
+                    }
+                    dr.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                //
+                float x = (transferMoney * value_1) / value_2;
+                balance_2 = balance_2 + x;
+                //
+                cmd = new SqlCommand();
+                cmd.Connection = cnn;
+                cmd.CommandText = "UPDATE bank.dbo.Account SET Balance = @money WHERE AccountNumber = @accNumber";
+                cmd.Parameters.AddWithValue("@money", balance_1);
+                cmd.Parameters.AddWithValue("@accNumber", getAccountNumber());
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                cmd = new SqlCommand();
+                cmd.Connection = cnn;
+                cmd.CommandText = "UPDATE bank.dbo.Account SET Balance = @money WHERE AccountNumber = @accNumber";
+                cmd.Parameters.AddWithValue("@money", balance_2);
+                cmd.Parameters.AddWithValue("@accNumber", accNumber_textBox.Text);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // add these to the record table
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+                SqlCommand command = new SqlCommand();
+                command.Connection = cnn;
+                command.CommandText = "INSERT INTO Record(TransferFrom, TransferTo ,RecType,Amount,FromBalance, ToBalance,Date) Values(@tfrom, @tto, 'Para Gönderme', " +
+                    "@amount,@frombalance, @tobalance, @date)";
+                command.Parameters.AddWithValue("@date", date);
+                command.Parameters.AddWithValue("@tfrom", getAccountNumber());
+                command.Parameters.AddWithValue("@tto", accNumber_textBox.Text);
+                command.Parameters.AddWithValue("@frombalance", balance_1);
+                command.Parameters.AddWithValue("@tobalance", balance_2);
+                command.Parameters.AddWithValue("@amount", transferMoney);
+                if (cnn.State == ConnectionState.Closed)
+                {
+                    cnn.Open();
+                }
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("İşlem tamamlandı");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                refreshAccList();
             }
         }
     }

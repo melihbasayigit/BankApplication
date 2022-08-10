@@ -284,6 +284,7 @@
             this.transferMoney_button.TabIndex = 16;
             this.transferMoney_button.Text = "Para Gönder";
             this.transferMoney_button.UseVisualStyleBackColor = true;
+            this.transferMoney_button.Click += new System.EventHandler(this.transferMoney_button_Click);
             // 
             // label4
             // 
